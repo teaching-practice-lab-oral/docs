@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="AI 英語面試練習系統 2026.07.26 作業成果下載、完整成果包與教師寄送功能更新。">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:title" content="2026-07-26 作業成果下載與寄送更新｜AI 英語面試練習系統">
+  <meta property="og:description" content="學生可下載已批改的完整學習成果，教師可依作業批次產生並寄送含 Word、音檔與檔案清單的成果包。">
+  <meta property="og:image" content="/assets/images/20260720-og-img.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="2026-07-26 作業成果下載與寄送更新｜AI 英語面試練習系統">
+  <meta name="twitter:description" content="學生可下載已批改的完整學習成果，教師可依作業批次產生並寄送含 Word、音檔與檔案清單的成果包。">
+  <meta name="twitter:image" content="/assets/images/20260720-og-img.png">
+  <title>2026-07-26 作業成果下載與寄送更新｜AI 英語面試練習系統</title>
+  <style>
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:#f5f5f3;color:#222;font-family:Arial,"Microsoft JhengHei","PingFang TC",sans-serif}
+    .site-header{padding:56px 20px 34px;text-align:center}
+    .version{margin:0 0 8px;font-size:14px;color:#5f6368;font-weight:700}
+    h1{margin:0;font-size:32px;line-height:1.35;color:#173f59}
+    .subtitle{margin:10px 0 0;font-size:17px;color:#333}
+    .review{margin:8px 0 0;font-size:14px;color:#666}
+    .wrap{width:min(100% - 32px,820px);margin:0 auto 56px;background:#fff;border-radius:12px;box-shadow:0 8px 28px rgba(0,0,0,.06)}
+    .article{padding:34px 40px 40px}
+    .article p{margin:0 0 18px;line-height:1.85;font-size:16px}
+    .article h2{margin:34px 0 16px;font-size:22px;line-height:1.5;color:#173f59}
+    .article h3{margin:26px 0 8px;font-size:17px;line-height:1.6;color:#222}
+    .article a{color:#165d87;text-underline-offset:3px}
+    .greeting{font-weight:700}
+    .stat-box{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;border:1px solid #c7d3da;padding:16px 18px;margin:22px 0}
+    .stat-item{line-height:1.55}
+    .stat-item strong{display:block;color:#173f59;font-size:18px}
+    .stat-item span{font-size:13px;color:#66727a}
+    .status-box{border:1px solid #e5c96a;background:#fffdf3;padding:16px 20px;margin:22px 0;line-height:1.8}
+    .core{margin-bottom:10px!important}
+    .notice-list{margin:0 0 20px;padding-left:1.4rem;line-height:1.85}
+    .notice-list li{margin-bottom:8px}
+    .feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0 22px}
+    .feature-card{padding:17px 18px;border:1px solid #d6e0e5;border-radius:9px;background:#fbfcfc}
+    .feature-card h3{margin:0 0 7px;font-size:16px;color:#173f59}
+    .feature-card p{margin:0!important;font-size:14px!important;line-height:1.75!important}
+    .feature-label{display:inline-block;margin-bottom:8px;padding:3px 8px;border-radius:999px;background:#e8f2f6;color:#24556d;font-size:12px;font-weight:700}
+    .security-note{padding:16px 18px;margin:20px 0;border-left:4px solid #287b68;background:#eef8f4;line-height:1.8}
+    .signoff{margin-bottom:6px!important}
+    .footnote{margin-top:24px!important;font-size:13px!important;color:#777}
+    .signature{margin-top:30px;padding-top:24px;border-top:2px dashed #222}
+    #sig4{margin-top:32px}
+    footer{padding:0 20px 40px;text-align:center;font-size:12px;color:#999}
+    @media(max-width:640px){
+      .site-header{padding:36px 18px 24px}
+      h1{font-size:25px}
+      .subtitle{font-size:15px}
+      .wrap{width:min(100% - 16px,820px);border-radius:8px}
+      .article{padding:24px 18px 30px}
+      .article p{font-size:15px}
+      .article h2{font-size:20px}
+      .stat-box,.feature-grid{grid-template-columns:1fr}
+    }
+  </style>
+  <script defer src="/assets/js/site.js"></script>
+  <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <p class="version">2026-07-26 作業成果下載與寄送更新</p>
+    <h1>AI 英語面試練習系統</h1>
+    <p class="subtitle">完整學習成果保存與交付說明</p>
+    <p class="review">更新範圍｜1ee2c8b → 42889e4</p>
+  </header>
+
+  <main class="wrap">
+    <article class="article">
+      <p class="greeting">親愛的同仁您好：</p>
+      <p>前一版已經讓學生能在作業頁面查看提交紀錄與教師評分，也讓老師可以匯出 Word 或成績資料。這一輪再把散落於系統中的作答、語音、AI 回饋、心得與批改結果整理成一份可以完整保存的學習成果包。</p>
+      <p>這次更新的重點很直接：學生在作業完成且老師批改後，可以自行下載自己的完整成果；老師也可以依作業一次替所有符合資格的學生產生成果包，寄到學生的主要信箱與備用信箱。</p>
+
+      <div class="stat-box" aria-label="本次更新規模">
+        <div class="stat-item"><strong>1 次</strong><span>版本更新紀錄</span></div>
+        <div class="stat-item"><strong>45 個</strong><span>檔案有所調整</span></div>
+        <div class="stat-item"><strong>42889e4</strong><span>本次版本快照</span></div>
+      </div>
+
+      <div class="status-box"><strong>版本狀態說明：</strong>以下所稱「已完成」，是指功能已納入截至 <code>42889e4</code> 的程式版本，並已同步整理至 Oral 原始碼工作樹；正式環境仍須完成資料庫結構、物件儲存、公開網址與寄信設定後再部署。</div>
+
+      <h2>本次更新的核心方向</h2>
+      <p class="core">一、讓學生能把一整次練習的文字、語音、回饋、心得與教師批改完整帶走，不必分散下載或自行整理。</p>
+      <p class="core">二、讓老師可以依作業批次寄送成果，並清楚看見符合資格、尚未完成及尚未批改的人數。</p>
+      <p class="core">三、讓成果檔案有明確的存取期限、下載權限、清理機制與操作紀錄，避免把私人學習資料長期放在不受控的公開網址。</p>
+
+      <h2>一、學生可以下載自己的完整成果</h2>
+      <p>學生完成作業且老師完成批改後，作業頁面會提供「下載完整成果」入口。系統會即時建立 ZIP 壓縮檔；若作業尚未完成、尚未批改，或不是該名學生自己的提交紀錄，後端會直接拒絕匯出。</p>
+      <p>學生下載與教師寄送使用同一套成果包產生邏輯，因此不會出現學生自行下載一種格式、老師寄出的又是另一種內容。</p>
+
+      <div class="feature-grid">
+        <section class="feature-card">
+          <span class="feature-label">Word 報告</span>
+          <h3>學習成果報告</h3>
+          <p>整理職位設定、寫作草稿與定稿、AI 回饋、跟讀、角色扮演逐輪內容、心得學習單，以及最新教師評分與評語。</p>
+        </section>
+        <section class="feature-card">
+          <span class="feature-label">完整音檔</span>
+          <h3>依用途分類保存</h3>
+          <p>收錄四題跟讀示範、學生跟讀錄音、面試官語音與學生面試錄音，並使用固定資料夾與題號／回合命名。</p>
+        </section>
+        <section class="feature-card">
+          <span class="feature-label">檔案清單</span>
+          <h3>可以核對完整性</h3>
+          <p>成果包內附檔案清單與各類音檔數量，方便學生與老師確認應有內容是否齊全。</p>
+        </section>
+        <section class="feature-card">
+          <span class="feature-label">目前資料版本</span>
+          <h3>不默默混用舊格式</h3>
+          <p>若必要資料、題號或音檔回合不完整，系統會明確回報失敗，不會產生一份看似成功但內容缺漏的成果包。</p>
+        </section>
+      </div>
+
+      <h2>二、老師可以依作業批次寄送</h2>
+      <p>管理端的學習成果頁面新增「寄給學生」功能。開啟後，系統會先顯示符合資格、尚未完成及尚未批改的人數；寄送範圍以老師可管理的學生與該作業最新一次已完成、已批改的提交為準，不受畫面上的搜尋、勾選或篩選條件影響。</p>
+      <p>確認後，系統會在背景逐一建立成果包並寄送。老師可以在畫面上查看處理進度、成功與失敗項目；若部分信箱寄送失敗，也可以只重試失敗項目，不必重新寄給全部學生。</p>
+
+      <h3>主要信箱與備用信箱分開記錄</h3>
+      <p>每位學生的主要信箱與備用信箱會分別記錄寄送結果。只要其中一個信箱寄送失敗，畫面就會保留對應狀態，讓老師知道需要重寄或另行聯絡；系統不會因另一個信箱成功就把失敗紀錄蓋掉。</p>
+
+      <h2>三、下載連結與檔案保存邊界</h2>
+      <p>教師寄出的成果包預設保存 14 天。學生點開信件連結時，不需要再次登入系統；因此連結本身等同短期下載憑證，不應轉寄、公開張貼或交給無關人士。</p>
+      <div class="security-note"><strong>隱私與安全提醒：</strong>系統不把物件儲存服務的永久公開網址直接交給使用者，而是先驗證一組不可預測的下載憑證，再建立短時間有效的下載網址。回應不允許快取，也不傳送來源頁面資訊；到期後，成果包會標示為過期並排入物件清理。</div>
+      <p>不同資料庫生命週期會使用不同的物件儲存 namespace。正式環境若重建資料庫，必須產生新的 namespace，避免新資料誤用或覆寫舊資料庫仍留在物件儲存中的學生檔案。</p>
+
+      <h2>四、既有匯出與資料處理一併整理</h2>
+      <p>這次也將原本放在管理端 router 內的 Word 與音檔產生程式集中到共用服務，讓學生下載、教師個別匯出與批次寄送共用相同的資料契約。檔名會移除不適合出現在路徑中的字元，音檔物件則必須屬於目前的儲存 namespace 與允許類別。</p>
+      <p>心得、角色扮演與評分資料也改用目前的正規化資料結構產生報告。若遇到舊格式或資料不一致，系統會停止該份匯出並留下錯誤資訊，方便後續查明原因。</p>
+
+      <h2>五、正式部署前需要完成的設定</h2>
+      <ul class="notice-list">
+        <li>資料庫需具備新版寄送工作欄位與 <code>result_packages</code> 資料表；不能只更新程式而沿用未調整的舊結構。</li>
+        <li>必須設定新的 <code>OBJECT_STORAGE_NAMESPACE</code>，並確認 Oracle Object Storage bucket 與存取權限可正常建立、讀取及刪除成果包。</li>
+        <li><code>PUBLIC_BASE_URL</code> 必須是正式 HTTPS 網址，寄出的下載連結才會回到正確系統。</li>
+        <li>必須實際驗證 SMTP 的寄件者、主要信箱、備用信箱、失敗重試與退信處理。</li>
+        <li>預設成果包保存 14 天、轉址下載網址有效 300 秒；若要調整，應先確認課程需求與資料保存政策。</li>
+      </ul>
+
+      <h2>六、使用者需要注意什麼</h2>
+      <ul class="notice-list">
+        <li>只有已完成且已有教師批改的作業，才會出現完整成果下載。</li>
+        <li>學生自行下載只限本人提交；老師批次寄送只限其可管理的作業與學生。</li>
+        <li>寄送連結預設 14 天後失效，收到後請在期限內下載並妥善保存。</li>
+        <li>成果包包含作答、錄音、AI 回饋、心得與教師評分，請勿任意轉寄或公開。</li>
+        <li>這次更新不會刪除既有作答、錄音、AI 回饋、心得或教師評分；正式部署仍須以實際 migration 與資料庫驗證結果為準。</li>
+      </ul>
+
+      <div class="signature">
+        <p>學生投入時間完成寫作、跟讀、角色扮演與心得後，這些成果不應只留在系統畫面裡。這次更新希望讓學生能保留一份完整、可閱讀也可回聽的學習紀錄，也讓老師在課程結束前，可以用比較清楚且可追蹤的方式把成果交還給每一位學生。</p>
+        <p class="signoff">謹此說明</p>
+        <p class="signoff"><time datetime="2026-07-26">2026 年 7 月 26 日</time></p>
+        <p class="footnote">統計範圍：版本 <code>1ee2c8b5c441d0aa08f480d548d51a9b017ee069</code> 之後至 <code>42889e44ca8aacf279e353eca79e7deef4641850</code>，共 1 次提交；差異統計為 45 個檔案、約新增 3,558 行及刪除 432 行。</p>
+
+        <div id="sig4">
+          <div style="font-family: 'Microsoft JhengHei', '微軟正黑體', Arial, sans-serif; font-size: 16px; line-height: 1.6; color: #000000; margin-bottom: 15px;">
+            祝您<br>
+            　　日日有好事<br>
+            <br>
+            洪名琮　敬上<br>
+          </div>
+          <table border="0" cellpadding="0" cellspacing="0" style="font-family: 'Microsoft JhengHei', '微軟正黑體', Arial, sans-serif; font-size: 13px; line-height: 1.5; color: #4b5563; max-width: 550px;">
+            <tbody>
+              <tr>
+                <td style="padding-bottom: 10px; border-bottom: 1px solid #d1d5db;">
+                  <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                      <tr>
+                        <td style="padding-right: 12px; vertical-align: top;">
+                          <img alt="洪名琮" class="sig-image" src="https://gravatar.com/avatar/f2dd5fed292cce86eee2cc01af8bd8d7bbd5e743c8fcc4f45c335b0f4cfc200a?size=128&amp;d=initials" style="width: 60px; height: 60px; border-radius: 4px; display: block;">
+                        </td>
+                        <td style="vertical-align: top;">
+                          <div style="font-size: 15px; font-weight: 600; color: #1f2937; margin-bottom: 2px;">洪名琮</div>
+                          <div style="font-size: 12px; color: #6b7280; margin-bottom: 4px;">國立雲林科技大學 資訊管理系(115級)</div>
+                          <div style="font-size: 11px; color: #4b5563;"><a href="mailto:sutw@yuntech.edu.tw" style="color: #4b5563; text-decoration: none;">蘇姿文老師</a></div>
+                          <div style="font-size: 11px; color: #9ca3af;">語言中心/通識中心 英文教學助理</div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding-top: 10px; padding-bottom: 10px;">
+                  <table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
+                    <tbody>
+                      <tr><td style="padding: 2px 0; font-size: 12px;"><span style="color: #9ca3af; width: 70px; display: inline-block;">公務信箱</span><a href="mailto:bridger@brid.pw" style="color: #4b5563; text-decoration: none;">bridger@brid.pw</a></td></tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="margin:28px auto 0; text-align:center; line-height:0;">
+          <img alt="洪名琮簽名圖片" src="https://r2.brid.pw/sign-new.webp" style="display:inline-block;width:440px;max-width:100%;height:auto;border:0;border-radius:8px;">
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer>© 2026 洪名琮</footer>
+</body>
+</html>
