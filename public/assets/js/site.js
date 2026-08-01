@@ -6,9 +6,14 @@
     { href: '/introduction/', label: '系統介紹' },
     { href: '/student-manual/', label: '學生手冊' },
     { href: '/admin-manual/', label: '管理手冊' },
-    { href: '/legal/', label: '使用者條款' },
+    { href: '/legal/', label: '條款與隱私' },
     { href: '/release-notes/', label: '發布紀錄' }
   ];
+
+  const CONTACT_ITEM = {
+    href: 'https://brid.pw/mailme',
+    label: '聯絡我們'
+  };
 
   const normalizePath = (value) => {
     const path = (value || '/').split('?')[0].split('#')[0];
@@ -39,6 +44,9 @@
       .docs-navbar__link:hover{background:#eef5f2;color:#145340!important}
       .docs-navbar__link[aria-current="page"]{background:#e4f3ec;color:#145340!important}
       .docs-navbar__link[aria-current="page"]::after{content:"";position:absolute;left:12px;right:12px;bottom:5px;height:2px;border-radius:999px;background:#1b6f58}
+      .docs-navbar__contact{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:8px 16px;border:1px solid #8f3212;border-radius:999px;background:#a63d17;color:#fff!important;box-shadow:0 5px 14px rgba(166,61,23,.28);font-size:14px;font-weight:900;letter-spacing:.02em;text-decoration:none!important;white-space:nowrap}
+      .docs-navbar__contact:hover{background:#8f3212;color:#fff!important;box-shadow:0 7px 18px rgba(143,50,18,.34);transform:translateY(-1px)}
+      .docs-navbar__contact:focus-visible{outline:3px solid #f4b28f;outline-offset:3px}
       .shell,.hero-inner{width:min(100% - 24px,var(--docs-page-width))!important;margin-left:auto!important;margin-right:auto!important}
       .layout,.intro-layout{width:min(100% - 24px,var(--docs-page-width))!important;margin-left:auto!important;margin-right:auto!important}
       .docs-global-dialog{width:min(96vw,1600px);max-height:96vh;padding:0;border:0;border-radius:16px;background:#f1f5f3;box-shadow:0 24px 80px rgba(0,0,0,.4)}
@@ -46,9 +54,9 @@
       .docs-global-dialog__wrap{position:relative;max-height:96vh;overflow:auto}
       .docs-global-dialog__image{display:block;width:100%;height:auto}
       .docs-global-dialog__close{position:sticky;top:12px;z-index:3;float:right;margin:12px 12px -50px 0;padding:8px 13px;border:1px solid #c8d4cf;border-radius:999px;background:rgba(255,255,255,.96);color:#2a3d43;font-weight:800;cursor:pointer}
-      @media(max-width:720px){.docs-navbar__inner{min-height:56px;gap:12px}.docs-navbar__brand{font-size:13px}.docs-navbar__link{padding:7px 10px;font-size:13px}}
+      @media(max-width:720px){.docs-navbar__inner{min-height:56px;gap:12px}.docs-navbar__brand{font-size:13px}.docs-navbar__link{padding:7px 10px;font-size:13px}.docs-navbar__contact{min-height:38px;padding:7px 13px;font-size:13px}}
       @media(max-width:640px){.shell,.hero-inner,.layout,.intro-layout{width:min(100% - 14px,var(--docs-page-width))!important}}
-      @media(max-width:470px){.docs-navbar__inner{width:100%;padding:0 10px;display:block}.docs-navbar__brand{display:block;padding:9px 4px 2px}.docs-navbar__links{margin:0 -2px;padding:0 0 7px}.docs-navbar__link{min-height:36px}}
+      @media(max-width:470px){.docs-navbar__inner{width:100%;padding:0 10px 7px;display:grid;grid-template-columns:minmax(0,1fr) 88px;gap:4px 10px}.docs-navbar__brand{grid-column:1/-1;display:block;padding:9px 4px 2px}.docs-navbar__links{min-width:0;margin:0 -2px;padding:0}.docs-navbar__link{min-height:36px}.docs-navbar__contact{width:88px;padding:7px 8px;align-self:center}}
       @media print{.docs-navbar,.docs-global-dialog{display:none!important}.shell,.hero-inner,.layout,.intro-layout{width:100%!important;margin-left:0!important;margin-right:0!important}}
     `;
     document.head.appendChild(style);
@@ -98,6 +106,23 @@
     });
 
     inner.appendChild(links);
+    const currentLink = links.querySelector('[aria-current="page"]');
+    if (currentLink) {
+      requestAnimationFrame(() => {
+        const currentLeft = currentLink.offsetLeft - links.offsetLeft;
+        links.scrollLeft = Math.max(0, currentLeft - ((links.clientWidth - currentLink.clientWidth) / 2));
+      });
+    }
+
+    const contact = document.createElement('a');
+    contact.className = 'docs-navbar__contact';
+    contact.href = CONTACT_ITEM.href;
+    contact.target = '_blank';
+    contact.rel = 'noopener noreferrer';
+    contact.textContent = CONTACT_ITEM.label;
+    contact.setAttribute('aria-label', `${CONTACT_ITEM.label}（另開新分頁）`);
+    inner.appendChild(contact);
+
     nav.appendChild(inner);
     document.body.insertBefore(nav, document.body.firstChild);
   };

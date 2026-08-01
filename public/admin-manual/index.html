@@ -123,6 +123,7 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
     <h1>AI 英語面試練習系統</h1>
     <p class="subtitle">Teacher & Administrator Guide</p>
     <p class="lead">這份手冊依照管理後台的實際工作流程整理。老師可以從建立使用者與作業開始，設定題目、AI 提示詞與評分規準，再透過批改中心檢視學生完整學習歷程、進行正式評分、開放重作、設定補繳期限與匯出成績。</p>
+    <p class="subtitle">文件更新日期：2026-08-01</p>
     <div class="role-flow">
       <span>系統總覽</span><span>使用者管理</span><span>作業管理</span><span>評分規準</span>
       <span>提示詞管理</span><span>批改中心</span><span>正式評分</span><span>成績匯出</span>
@@ -156,7 +157,7 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
   <div class="cards">
     <div class="card"><strong>課前</strong><span>使用者與班級資料由名琮協助處理；老師與助教確認作業內容，並協調各份作業的開始與結束時間。</span></div>
     <div class="card"><strong>進行中</strong><span>查看學生進度、發現卡關學生；若需補繳或調整期限，由助教與老師先協調後再設定。</span></div>
-    <div class="card"><strong>完成後</strong><span>查看完整學習歷程、依 Rubric 批改、匯出正式成績。</span></div>
+    <div class="card"><strong>完成後</strong><span>查看完整學習歷程、依評分規準批改、匯出正式成績。</span></div>
   </div>
   <div class="warn"><strong>建議：</strong>正式開課前先用測試帳號走完一次學生端六階段流程，再開始大量建立學生或開放作業。</div>
 </section>
@@ -235,11 +236,11 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
     <div class="step"><strong>基本設定</strong><p>確認標題、說明、指定班級；作業開始時間與結束時間請先由助教與老師協調後再設定。</p></div>
     <div class="step"><strong>題目設定</strong><p>確認寫作、跟讀與角色扮演共用的四道核心題目；可選公版題組或依規則建立自訂題組。</p></div>
     <div class="step"><strong>AI 提示詞設定</strong><p>選擇寫作草稿回饋、面試官角色扮演與最終學習回饋使用的提示詞版本。</p></div>
-    <div class="step"><strong>批改評分規準</strong><p>指定老師正式批改時使用的 Rubric。</p></div>
+    <div class="step"><strong>批改評分規準</strong><p>指定老師正式批改時使用的評分規準。</p></div>
     <div class="step"><strong>儲存全部</strong><p>確認後再儲存，並使用測試帳號檢查學生端顯示是否正確。</p></div>
   </div>
   <div class="note"><strong>自訂題組規則：</strong>必須恰好填寫 4 題，每題 1 至 500 個字元，並使用英文或其他拉丁文字。系統會保留老師輸入的順序，不會隨機重排。學生填寫的職位名稱、工作內容與能力背景仍可使用中文。</div>
-  <div class="warn">學生開始作答後，該次練習會保留開始時的題目快照；後續編輯不會覆寫既有練習歷程。為避免同一作業的學生接到不同任務，開放後仍不建議任意更換題目、AI 提示詞或評分規準。</div>
+  <div class="warn">學生開始作答後，該次練習會保留開始時的題目版本；後續編輯不會覆寫既有練習歷程。為避免同一作業的學生接到不同任務，開放後仍不建議任意更換題目、AI 提示詞或評分規準。</div>
   
     <figure class="shot">
       <button class="shot-btn" type="button" data-img="/assets/images/FireShot%20Capture%20018%20-%20%E4%BD%9C%E6%A5%AD%E4%B8%80%EF%BC%9A%E5%80%8B%E4%BA%BA%E8%83%8C%E6%99%AF%E8%88%87%E5%8B%95%E6%A9%9F%20-%20%E7%B7%A8%E8%BC%AF%E4%BD%9C%E6%A5%AD%20-%20%5Bdev-oral.brid.pw%5D.png" aria-label="放大查看：編輯作業">
@@ -261,14 +262,14 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
     <li>各層級描述盡量使用可觀察的行為，不要只寫「很好」「普通」「不好」。</li>
     <li>正式開始評分後，不要直接覆蓋舊規準；應使用版本管理，保留當時的評分依據。</li>
   </ul>
-  <div class="good">系統設計的重點是讓「學生當時被怎麼評」可以被保留下來。日後即使 Rubric 更新，過去成績仍應能追溯至原本使用的版本。</div>
+  <div class="good">系統設計的重點是讓「學生當時被怎麼評」可以被保留下來。日後即使評分規準更新，過去成績仍應能追溯至原本使用的版本。</div>
   
     <figure class="shot">
       <button class="shot-btn" type="button" data-img="/assets/images/FireShot%20Capture%20019%20-%20%E8%A9%95%E5%88%86%E8%A6%8F%E6%BA%96%E7%AE%A1%E7%90%86%20-%20AI%20%E8%8B%B1%E8%AA%9E%E9%9D%A2%E8%A9%A6%E7%B7%B4%E7%BF%92%E7%B3%BB%E7%B5%B1%E7%AE%A1%E7%90%86%E5%BE%8C%E5%8F%B0%20-%20%5Bdev-oral.brid.pw%5D.png" aria-label="放大查看：評分規準管理">
         <img src="/assets/images/FireShot%20Capture%20019%20-%20%E8%A9%95%E5%88%86%E8%A6%8F%E6%BA%96%E7%AE%A1%E7%90%86%20-%20AI%20%E8%8B%B1%E8%AA%9E%E9%9D%A2%E8%A9%A6%E7%B7%B4%E7%BF%92%E7%B3%BB%E7%B5%B1%E7%AE%A1%E7%90%86%E5%BE%8C%E5%8F%B0%20-%20%5Bdev-oral.brid.pw%5D.png" alt="評分規準管理" loading="lazy">
         <span class="zoom">點擊放大</span>
       </button>
-      <figcaption><strong>評分規準管理</strong><span>建立與維護正式評分 Rubric，設定各面向配分與表現層級描述。</span></figcaption>
+      <figcaption><strong>評分規準管理</strong><span>建立與維護正式評分規準，設定各面向配分與表現層級描述。</span></figcaption>
     </figure>
     
 </section>
@@ -347,7 +348,7 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
     <div class="step"><strong>看寫作與 AI 練習回饋</strong><p>了解學生如何從草稿修正到最終回答。</p></div>
     <div class="step"><strong>看跟讀與角色扮演</strong><p>播放錄音、閱讀逐字稿，觀察口語表達、理解與臨場應對。</p></div>
     <div class="step"><strong>看最終 AI 回饋與心得</strong><p>確認學生是否理解自己的問題，以及是否能提出具體改進方向。</p></div>
-    <div class="step"><strong>依 Rubric 正式評分</strong><p>老師的成績才是正式成績；不要直接以 AI 分析取代教師判斷。</p></div>
+    <div class="step"><strong>依評分規準正式評分</strong><p>老師的成績才是正式成績；不要直接以 AI 分析取代教師判斷。</p></div>
   </div>
   <div class="good">最完整的評分證據應該來自「學生的實際回答＋錄音＋學習歷程＋心得」，而不是只看 AI 最後寫出的總結。</div>
   
@@ -395,7 +396,7 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
       <tr><td>批次匯出所有版本</td><td>保留學生多次嘗試與不同版本資料，適合研究與完整備份。</td></tr>
     </tbody>
   </table>
-  <div class="note">若資料將用於研究分析，請先確認研究倫理、個資告知與資料去識別化要求；不要直接把可辨識學生身分的原始匯出檔放入公開雲端或版本控制系統。</div>
+  <div class="note">若資料將用於研究分析，請先確認研究倫理、隱私權政策與資料去識別化要求；不要直接把可辨識學生身分的原始匯出檔放入公開雲端或版本控制系統。</div>
   
     <figure class="shot">
       <button class="shot-btn" type="button" data-img="/assets/images/FireShot%20Capture%20022%20-%20%E5%AD%B8%E7%94%9F%E4%BD%9C%E6%A5%AD%E7%B8%BD%E8%A6%BD%20-%20AI%20%E8%8B%B1%E8%AA%9E%E9%9D%A2%E8%A9%A6%E7%B7%B4%E7%BF%92%E7%B3%BB%E7%B5%B1%E7%AE%A1%E7%90%86%E5%BE%8C%E5%8F%B0%20-%20%5Bdev-oral.brid.pw%5D.png" aria-label="放大查看：學生作業總覽上的匯出功能">
@@ -419,9 +420,9 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
 <section class="section">
   <h2>老師端最推薦的日常工作流程</h2>
   <div class="steps">
-    <div class="step"><strong>課前一週</strong><p>名琮完成學生帳號與班級資料 → 老師與助教確認作業內容 → 協調開始／結束時間 → 測試題目、提示詞與 Rubric。</p></div>
+    <div class="step"><strong>課前一週</strong><p>名琮完成學生帳號與班級資料 → 老師與助教確認作業內容 → 協調開始／結束時間 → 測試題目、提示詞與評分規準。</p></div>
     <div class="step"><strong>作業開放後</strong><p>從批改中心看整體進度，優先處理「需要協助」或有問題回報的學生。</p></div>
-    <div class="step"><strong>學生完成後</strong><p>進入學生詳情，依完整學習歷程與正式 Rubric 批改。</p></div>
+    <div class="step"><strong>學生完成後</strong><p>進入學生詳情，依完整學習歷程與正式評分規準批改。</p></div>
     <div class="step"><strong>截止後</strong><p>若有補繳或重作需求，先由助教與老師協調對象與期限，再進行設定；最後匯出成績與必要的批改紀錄。</p></div>
   </div>
 </section>
@@ -429,8 +430,7 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
 </main>
 </div>
 
-<footer class="footer">AI 英語面試練習系統 · 老師／管理員操作手冊</footer>
-<footer class="footer">© 2026 蘇姿文 / 洪名琮</footer>
+<footer class="footer">AI 英語面試練習系統 · 老師／管理員操作手冊<br>© 2026 蘇姿文 / 洪名琮</footer>
 
 <dialog id="modal">
   <div class="modal">
