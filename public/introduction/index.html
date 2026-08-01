@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="light">
-  <meta name="description" content="AI 英語面試練習系統介紹：學生練習流程、AI 回饋、教師評分、研究計畫、資料使用與技術架構。">
+  <meta name="description" content="AI 英語面試練習系統介紹：學生練習流程、AI 回饋、教師評分、研究計畫，以及資料與隱私說明。">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="zh_TW">
   <meta property="og:title" content="AI 英語面試練習系統｜系統介紹">
@@ -41,7 +41,6 @@
     .role-card li{margin:6px 0}
     .evidence-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}
     .evidence-item{padding:14px 16px;border:1px solid var(--line);border-radius:13px;background:#fbfcfb;color:#40535b;font-size:14px}
-    .architecture{margin-top:18px;padding:18px 20px;border:1px solid #c9dbea;border-radius:14px;background:var(--secondary-soft);color:#314866;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;line-height:1.75;overflow-x:auto;white-space:pre}
     .project-card{padding:22px;border:1px solid var(--line);border-radius:16px;background:#fff}
     .project-card p:last-child{margin-bottom:0}
     .project-details{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 26px;margin:20px 0 0;padding:20px 22px;border:1px solid var(--line);border-radius:14px;background:#f8faf9}
@@ -64,7 +63,7 @@
     .source-note{margin-top:18px;padding:18px 20px;border-left:4px solid var(--primary);border-radius:0 13px 13px 0;background:#f7faf8;color:#425159}
     .source-note a{font-weight:800;word-break:break-all}
     @media(max-width:980px){.intro-layout{grid-template-columns:1fr}.intro-layout .sidebar{display:none}.intro-summary,.attempt-grid{grid-template-columns:1fr}.flow-detail,.role-grid,.evidence-list,.project-details{grid-template-columns:1fr}.project-detail--wide{grid-column:auto}}
-    @media(max-width:640px){.intro-layout{width:min(100% - 14px,1220px);margin-top:15px}.intro-summary{gap:10px}.architecture{font-size:12px}.research-evolution,.research-evolution tbody,.research-evolution tr,.research-evolution th,.research-evolution td{display:block}.research-evolution thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.research-evolution tr{padding:12px 14px;border-bottom:1px solid var(--line)}.research-evolution tr:last-child{border-bottom:0}.research-evolution td,.research-evolution th{width:auto!important;padding:0;border:0}.research-evolution td:first-child{margin-bottom:5px}.research-evolution td:last-child{font-size:13px}}
+    @media(max-width:640px){.intro-layout{width:min(100% - 14px,1220px);margin-top:15px}.intro-summary{gap:10px}.research-evolution,.research-evolution tbody,.research-evolution tr,.research-evolution th,.research-evolution td{display:block}.research-evolution thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.research-evolution tr{padding:12px 14px;border-bottom:1px solid var(--line)}.research-evolution tr:last-child{border-bottom:0}.research-evolution td,.research-evolution th{width:auto!important;padding:0;border:0}.research-evolution td:first-child{margin-bottom:5px}.research-evolution td:last-child{font-size:13px}}
   </style>
   <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 </head>
@@ -98,7 +97,7 @@
       <a href="#teacher-workflow">教師與管理端</a>
       <a href="#assessment">正式評量與證據</a>
       <a href="#research">研究計畫</a>
-      <a href="#technology">架構、資料與開源</a>
+      <a href="#technology">資料與隱私</a>
     </nav>
 
     <main class="intro-content">
@@ -191,8 +190,8 @@
         <h2>教師與管理端</h2>
         <p>管理後台集中處理作業、題目、評分規準、學習紀錄、補繳／重作與成績匯出。課程管理員只能管理獲授權的課程；全站 AI 提示詞、評分規準與管理員帳號則限指定的高權限管理員操作。</p>
         <div class="feature-grid">
-          <article class="feature"><strong>系統總覽與進度掌握</strong><p>查看學生數、作業數、提交紀錄、完成狀態、需要協助者與 API 使用情形。</p></article>
-          <article class="feature"><strong>使用者與班級管理</strong><p>支援搜尋、班級篩選、帳號維護與 XLSX 匯入；實際課程名單可由系統管理者統一處理。</p></article>
+          <article class="feature"><strong>系統總覽與進度掌握</strong><p>查看學生數、作業數、提交紀錄、完成狀態、需要協助者與 AI 服務用量。</p></article>
+          <article class="feature"><strong>使用者與班級管理</strong><p>支援搜尋、班級篩選、帳號維護與 Excel 檔案匯入；實際課程名單可由系統管理者統一處理。</p></article>
           <article class="feature"><strong>作業與題目管理</strong><p>設定標題、說明、四道核心題目、開放／截止日期與課程執行方式。</p></article>
           <article class="feature"><strong>AI 提示詞版本管理</strong><p>由受指定的高權限管理員分別管理寫作回饋、面試官與最終學習回饋，避免課程進行中直接覆蓋舊版本。</p></article>
           <article class="feature"><strong>批改中心</strong><p>依作業與學生狀態搜尋、篩選，快速找出未開始、練習中、待批改或需要協助的學生。</p></article>
@@ -259,26 +258,17 @@
       </section>
 
       <section class="section" id="technology">
-        <h2>系統如何運作、資料放在哪裡、原始碼如何公開</h2>
-        <p>學生、教師與管理員透過瀏覽器使用系統。帳號、作業、學習歷程與評分存放在系統資料庫；外部 AI 服務處理語音辨識、文字回饋與示範語音，學生錄音則存放於不對外公開的雲端檔案空間。系統也可將部分錄音或示範語音交給位於台灣的語音處理伺服器。它只處理當次所需的錄音或文字，不保存帳號、作業或課程資料；無法使用時由主系統接手。</p>
-        <div class="architecture" aria-label="系統架構">瀏覽器（學生／教師／管理員）
-  │
-  ▼
-FastAPI 應用程式（登入、權限、學生端與管理端 API）
-  ├─ PostgreSQL：帳號、作業、學習歷程與評分
-  ├─ AI API：語音辨識、文字回饋與語音合成
-  ├─ 私有雲端檔案空間：學生錄音
-  ├─ 電子郵件服務：帳號與作業通知
-  ├─ Cloudflare Turnstile：登入人機驗證
-  └─ 台灣語音處理伺服器：處理部分錄音格式轉換、語音辨識與示範語音</div>
-        <p>系統設有登入防機器人驗證、權限區分、外部服務使用量限制、錄音長度限制、密碼重設與安全檢查紀錄等機制。帳戶設定會依狀態分成只需更新密碼、只需確認條款與隱私權政策，以及兩者都需要；強制流程完成前不能略過，也不會先載入作業。兩份文件的名稱、連結與版本由系統統一提供，舊版本的確認紀錄不會被當成新版本。</p>
-        <p>角色扮演與跟讀各有固定的語音設定，主系統與台灣語音處理伺服器使用相同的輸入規則；單次輸入上限為 4,096 個字元。角色扮演若產生過長、非拉丁文字或偏離指定題意的問題，會回到原本且已驗證的核心題目。</p>
-        <p>為維持練習完整性，桌機版練習頁使用全螢幕模式，行動裝置則需從已安裝的系統應用程式（PWA）開啟。系統可能記錄進入或離開全螢幕、頁面隱藏、視窗失焦、貼上遭阻擋與異常大量輸入等事件，供教師進行課程管理與查核。詳細資料類別與保存期間請見<a href="/legal/privacy-notice/">隱私權政策</a>。</p>
-        <p>原始碼不包含真實學生資料、正式環境密碼與金鑰、資料庫備份、錄音檔、內部安全檢查材料或本機測試檔；驗證工具由維護者保存在不公開的環境。實際部署者仍需自行負責資料告知、同意、保存、刪除與跨境傳輸等規範。公開原始碼說明的是可自行部署的版本，實際服務使用的雲端區域、外部服務與啟用功能，仍以各部署環境及其使用者條款與隱私權政策為準。</p>
+        <h2>使用系統時，資料會怎麼處理</h2>
+        <p>系統只在提供練習、回饋、評分及課程管理所需的範圍內處理資料。以下先用幾個常見情境說明；完整的資料類別、使用方式、保存期間與權利行使方式，請以<a href="/legal/privacy-notice/">隱私權政策</a>為準。</p>
+        <div class="feature-grid">
+          <article class="feature"><strong>帳號與學習紀錄</strong><p>帳號、作業內容、作答歷程、學習心得與教師評分會保存在系統中，讓學生接續練習，也讓教師掌握進度與批改。</p></article>
+          <article class="feature"><strong>錄音與附件</strong><p>學生上傳的錄音與附件存放在不公開的檔案空間，只有具備相應權限的人員可以查看。</p></article>
+          <article class="feature"><strong>AI 練習功能</strong><p>使用語音辨識、文字回饋或示範語音時，系統會把完成該次功能所需的錄音或文字傳送給外部 AI 服務。</p></article>
+          <article class="feature"><strong>台灣語音處理伺服器</strong><p>部分錄音格式轉換、語音辨識與示範語音可由台灣的伺服器處理。它不保存帳號、作業或課程資料；無法使用時由主系統接手。</p></article>
+        </div>
+        <p>為維持練習完整性，桌機版練習頁會使用全螢幕模式；使用手機時，需從主畫面開啟已安裝的系統應用程式。系統可能記錄離開全螢幕、切換頁面、視窗失去焦點、貼上遭阻擋或異常大量輸入等事件，供教師進行課程管理與查核。</p>
         <div class="source-note">
-          本專案自行開發的原始碼與文件依 <strong>Apache License 2.0</strong> 開放；第三方套件、容器基底映像、CDN 資源、FFmpeg、PostgreSQL 與外部服務仍適用各自的授權或服務條款。版本化公開原始碼與部署說明請見
-          <a href="https://github.com/bridgerhung/oral" target="_blank" rel="noopener noreferrer">github.com/bridgerhung/oral</a>。公開原始碼版本與線上服務可能分別更新，差異請參考<a href="/release-notes/">發布紀錄</a>；系統入口為
-          <a href="https://oral.brid.pw" target="_blank" rel="noopener noreferrer">oral.brid.pw</a>，並可能導向目前提供服務的系統網址。
+          <strong>想查看原始碼：</strong>本專案自行開發的程式與文件依 Apache License 2.0 公開於 <a href="https://github.com/bridgerhung/oral" target="_blank" rel="noopener noreferrer">GitHub</a>。公開內容不包含學生資料、錄音、正式環境密碼或資料庫備份；公開版本與線上服務的更新時間可能不同，差異請見<a href="/release-notes/">發布紀錄</a>。
         </div>
       </section>
     </main>

@@ -121,7 +121,7 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
   <div class="hero-inner">
     <span class="badge">🧑‍🏫 老師／管理員版操作手冊</span>
     <h1>AI 英語面試練習系統</h1>
-    <p class="subtitle">Teacher & Administrator Guide</p>
+    <p class="subtitle">從課前設定、進度追蹤到正式批改</p>
     <p class="lead">這份手冊依照管理後台的實際工作流程整理。老師可以從建立使用者與作業開始，設定題目、AI 提示詞與評分規準，再透過批改中心檢視學生完整學習歷程、進行正式評分、開放重作、設定補繳期限與匯出成績。</p>
     <p class="subtitle">文件更新日期：2026-08-01</p>
     <div class="role-flow">
@@ -164,31 +164,31 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
 
 <section class="section" id="dashboard">
   <h2>1. 系統總覽</h2>
-  <p>登入管理後台後，首先看到系統總覽。這裡可以快速確認目前學生數、作業數、提交紀錄、已完成數與當日 API 用量，並直接進入各份作業查看學生作業。</p>
+  <p>登入管理後台後，首先看到系統總覽。這裡可以快速確認目前學生數、作業數、提交紀錄、已完成數與當日 AI 服務用量，並直接進入各份作業查看學生作業。</p>
   <ul class="check">
     <li>確認學生與作業是否已正確建立。</li>
     <li>查看各份作業目前是否開放中。</li>
     <li>從「查看學生作業」快速進入指定作業的學生名單。</li>
-    <li>留意 API 用量是否異常增加。</li>
+    <li>留意 AI 服務用量是否異常增加。</li>
   </ul>
   
     <figure class="shot">
       <button class="shot-btn" type="button" data-img="/assets/images/FireShot%20Capture%20015%20-%20%E7%B3%BB%E7%B5%B1%E7%B8%BD%E8%A6%BD%20-%20AI%20%E8%8B%B1%E8%AA%9E%E9%9D%A2%E8%A9%A6%E7%B7%B4%E7%BF%92%E7%B3%BB%E7%B5%B1%E7%AE%A1%E7%90%86%E5%BE%8C%E5%8F%B0%20-%20%5Bdev-oral.brid.pw%5D.png" aria-label="放大查看：系統總覽">
         <img src="/assets/images/FireShot%20Capture%20015%20-%20%E7%B3%BB%E7%B5%B1%E7%B8%BD%E8%A6%BD%20-%20AI%20%E8%8B%B1%E8%AA%9E%E9%9D%A2%E8%A9%A6%E7%B7%B4%E7%BF%92%E7%B3%BB%E7%B5%B1%E7%AE%A1%E7%90%86%E5%BE%8C%E5%8F%B0%20-%20%5Bdev-oral.brid.pw%5D.png" alt="系統總覽" loading="lazy">
-        <span class="zoom">點擊放大</span>
+        <span class="zoom">點一下放大</span>
       </button>
-      <figcaption><strong>系統總覽</strong><span>快速查看學生數、作業數、提交紀錄、完成數與 API 用量。</span></figcaption>
+      <figcaption><strong>系統總覽</strong><span>快速查看學生數、作業數、提交紀錄、完成數與 AI 服務用量。</span></figcaption>
     </figure>
     
 </section>
 
 <section class="section" id="users">
   <h2>2. 使用者管理</h2>
-  <p>使用者管理用來建立與維護學生／管理員帳號，也支援依學號、姓名搜尋、依班級篩選，以及使用 XLSX 匯入大量學生。</p>
-  <div class="good"><strong>本課程的使用者與 XLSX 匯入會由名琮協助處理。</strong>老師與助教原則上不需要自行建立或大量匯入學生帳號；若發現學生資料、班級或帳號狀態有問題，再通知名琮協助處理即可。</div>
+  <p>使用者管理用來建立與維護學生／管理員帳號，也支援依學號、姓名搜尋、依班級篩選，以及使用 Excel（XLSX）檔案一次匯入多位學生。</p>
+  <div class="good"><strong>本課程的使用者資料與 Excel 檔案匯入會由名琮協助處理。</strong>老師與助教原則上不需要自行建立或大量匯入學生帳號；若發現學生資料、班級或帳號狀態有問題，再通知名琮協助處理即可。</div>
   <h3>老師與助教需要知道的重點</h3>
   <ul class="check">
-    <li><strong>學生帳號建立與 XLSX 匯入：</strong>由名琮統一協助處理。</li>
+    <li><strong>學生帳號建立與 Excel 檔案匯入：</strong>由名琮統一協助處理。</li>
     <li><strong>班級資料：</strong>若發現學生班級或名單有誤，請通知名琮修正。</li>
     <li><strong>帳號異常：</strong>若學生無法登入、需要重設密碼或帳號狀態有問題，請先蒐集學生姓名與學號，再交由名琮協助處理。</li>
     <li><strong>老師與助教的主要工作：</strong>不在建立帳號，而是在確認作業安排、掌握學生進度與進行正式批改。</li>
@@ -198,7 +198,7 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
     <figure class="shot">
       <button class="shot-btn" type="button" data-img="/assets/images/FireShot%20Capture%20016%20-%20%E4%BD%BF%E7%94%A8%E8%80%85%E7%AE%A1%E7%90%86%20-%20AI%20%E8%8B%B1%E8%AA%9E%E9%9D%A2%E8%A9%A6%E7%B7%B4%E7%BF%92%E7%B3%BB%E7%B5%B1%E7%AE%A1%E7%90%86%E5%BE%8C%E5%8F%B0%20-%20%5Bdev-oral.brid.pw%5D.png" aria-label="放大查看：使用者管理">
         <img src="/assets/images/FireShot%20Capture%20016%20-%20%E4%BD%BF%E7%94%A8%E8%80%85%E7%AE%A1%E7%90%86%20-%20AI%20%E8%8B%B1%E8%AA%9E%E9%9D%A2%E8%A9%A6%E7%B7%B4%E7%BF%92%E7%B3%BB%E7%B5%B1%E7%AE%A1%E7%90%86%E5%BE%8C%E5%8F%B0%20-%20%5Bdev-oral.brid.pw%5D.png" alt="使用者管理" loading="lazy">
-        <span class="zoom">點擊放大</span>
+        <span class="zoom">點一下放大</span>
       </button>
       <figcaption><strong>使用者管理</strong><span>搜尋、篩選、建立、匯入與維護學生及管理員帳號。</span></figcaption>
     </figure>
@@ -221,7 +221,7 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
     <figure class="shot">
       <button class="shot-btn" type="button" data-img="/assets/images/FireShot%20Capture%20017%20-%20%E4%BD%9C%E6%A5%AD%E7%AE%A1%E7%90%86%20-%20AI%20%E8%8B%B1%E8%AA%9E%E9%9D%A2%E8%A9%A6%E7%B7%B4%E7%BF%92%E7%B3%BB%E7%B5%B1%E7%AE%A1%E7%90%86%E5%BE%8C%E5%8F%B0%20-%20%5Bdev-oral.brid.pw%5D.png" aria-label="放大查看：作業管理">
         <img src="/assets/images/FireShot%20Capture%20017%20-%20%E4%BD%9C%E6%A5%AD%E7%AE%A1%E7%90%86%20-%20AI%20%E8%8B%B1%E8%AA%9E%E9%9D%A2%E8%A9%A6%E7%B7%B4%E7%BF%92%E7%B3%BB%E7%B5%B1%E7%AE%A1%E7%90%86%E5%BE%8C%E5%8F%B0%20-%20%5Bdev-oral.brid.pw%5D.png" alt="作業管理" loading="lazy">
-        <span class="zoom">點擊放大</span>
+        <span class="zoom">點一下放大</span>
       </button>
       <figcaption><strong>作業管理</strong><span>管理五份主題作業、查看題目與作業狀態，並進入編輯或批改。</span></figcaption>
     </figure>
@@ -245,7 +245,7 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
     <figure class="shot">
       <button class="shot-btn" type="button" data-img="/assets/images/FireShot%20Capture%20018%20-%20%E4%BD%9C%E6%A5%AD%E4%B8%80%EF%BC%9A%E5%80%8B%E4%BA%BA%E8%83%8C%E6%99%AF%E8%88%87%E5%8B%95%E6%A9%9F%20-%20%E7%B7%A8%E8%BC%AF%E4%BD%9C%E6%A5%AD%20-%20%5Bdev-oral.brid.pw%5D.png" aria-label="放大查看：編輯作業">
         <img src="/assets/images/FireShot%20Capture%20018%20-%20%E4%BD%9C%E6%A5%AD%E4%B8%80%EF%BC%9A%E5%80%8B%E4%BA%BA%E8%83%8C%E6%99%AF%E8%88%87%E5%8B%95%E6%A9%9F%20-%20%E7%B7%A8%E8%BC%AF%E4%BD%9C%E6%A5%AD%20-%20%5Bdev-oral.brid.pw%5D.png" alt="編輯作業" loading="lazy">
-        <span class="zoom">點擊放大</span>
+        <span class="zoom">點一下放大</span>
       </button>
       <figcaption><strong>編輯作業</strong><span>設定作業基本資料、題組、AI 提示詞與本次批改使用的評分規準。</span></figcaption>
     </figure>
@@ -267,7 +267,7 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
     <figure class="shot">
       <button class="shot-btn" type="button" data-img="/assets/images/FireShot%20Capture%20019%20-%20%E8%A9%95%E5%88%86%E8%A6%8F%E6%BA%96%E7%AE%A1%E7%90%86%20-%20AI%20%E8%8B%B1%E8%AA%9E%E9%9D%A2%E8%A9%A6%E7%B7%B4%E7%BF%92%E7%B3%BB%E7%B5%B1%E7%AE%A1%E7%90%86%E5%BE%8C%E5%8F%B0%20-%20%5Bdev-oral.brid.pw%5D.png" aria-label="放大查看：評分規準管理">
         <img src="/assets/images/FireShot%20Capture%20019%20-%20%E8%A9%95%E5%88%86%E8%A6%8F%E6%BA%96%E7%AE%A1%E7%90%86%20-%20AI%20%E8%8B%B1%E8%AA%9E%E9%9D%A2%E8%A9%A6%E7%B7%B4%E7%BF%92%E7%B3%BB%E7%B5%B1%E7%AE%A1%E7%90%86%E5%BE%8C%E5%8F%B0%20-%20%5Bdev-oral.brid.pw%5D.png" alt="評分規準管理" loading="lazy">
-        <span class="zoom">點擊放大</span>
+        <span class="zoom">點一下放大</span>
       </button>
       <figcaption><strong>評分規準管理</strong><span>建立與維護正式評分規準，設定各面向配分與表現層級描述。</span></figcaption>
     </figure>
@@ -290,7 +290,7 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
     <figure class="shot">
       <button class="shot-btn" type="button" data-img="/assets/images/FireShot%20Capture%20020%20-%20%E6%8F%90%E7%A4%BA%E8%A9%9E%E7%AE%A1%E7%90%86%20-%20AI%20%E8%8B%B1%E8%AA%9E%E9%9D%A2%E8%A9%A6%E7%B7%B4%E7%BF%92%E7%B3%BB%E7%B5%B1%E7%AE%A1%E7%90%86%E5%BE%8C%E5%8F%B0%20-%20%5Bdev-oral.brid.pw%5D.png" aria-label="放大查看：提示詞管理">
         <img src="/assets/images/FireShot%20Capture%20020%20-%20%E6%8F%90%E7%A4%BA%E8%A9%9E%E7%AE%A1%E7%90%86%20-%20AI%20%E8%8B%B1%E8%AA%9E%E9%9D%A2%E8%A9%A6%E7%B7%B4%E7%BF%92%E7%B3%BB%E7%B5%B1%E7%AE%A1%E7%90%86%E5%BE%8C%E5%8F%B0%20-%20%5Bdev-oral.brid.pw%5D.png" alt="提示詞管理" loading="lazy">
-        <span class="zoom">點擊放大</span>
+        <span class="zoom">點一下放大</span>
       </button>
       <figcaption><strong>提示詞管理</strong><span>管理不同 AI 階段使用的系統提示詞與版本。</span></figcaption>
     </figure>
@@ -310,7 +310,7 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
     <figure class="shot">
       <button class="shot-btn" type="button" data-img="/assets/images/FireShot%20Capture%20021%20-%20%E6%89%B9%E6%94%B9%E4%B8%AD%E5%BF%83%20-%20AI%20%E8%8B%B1%E8%AA%9E%E9%9D%A2%E8%A9%A6%E7%B7%B4%E7%BF%92%E7%B3%BB%E7%B5%B1%E7%AE%A1%E7%90%86%E5%BE%8C%E5%8F%B0%20-%20%5Bdev-oral.brid.pw%5D.png" aria-label="放大查看：批改中心">
         <img src="/assets/images/FireShot%20Capture%20021%20-%20%E6%89%B9%E6%94%B9%E4%B8%AD%E5%BF%83%20-%20AI%20%E8%8B%B1%E8%AA%9E%E9%9D%A2%E8%A9%A6%E7%B7%B4%E7%BF%92%E7%B3%BB%E7%B5%B1%E7%AE%A1%E7%90%86%E5%BE%8C%E5%8F%B0%20-%20%5Bdev-oral.brid.pw%5D.png" alt="批改中心" loading="lazy">
-        <span class="zoom">點擊放大</span>
+        <span class="zoom">點一下放大</span>
       </button>
       <figcaption><strong>批改中心</strong><span>以作業為單位查看未開始、練習中、已批改與需要協助的人數。</span></figcaption>
     </figure>
@@ -332,7 +332,7 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
     <figure class="shot">
       <button class="shot-btn" type="button" data-img="/assets/images/FireShot%20Capture%20022%20-%20%E5%AD%B8%E7%94%9F%E4%BD%9C%E6%A5%AD%E7%B8%BD%E8%A6%BD%20-%20AI%20%E8%8B%B1%E8%AA%9E%E9%9D%A2%E8%A9%A6%E7%B7%B4%E7%BF%92%E7%B3%BB%E7%B5%B1%E7%AE%A1%E7%90%86%E5%BE%8C%E5%8F%B0%20-%20%5Bdev-oral.brid.pw%5D.png" aria-label="放大查看：學生作業總覽">
         <img src="/assets/images/FireShot%20Capture%20022%20-%20%E5%AD%B8%E7%94%9F%E4%BD%9C%E6%A5%AD%E7%B8%BD%E8%A6%BD%20-%20AI%20%E8%8B%B1%E8%AA%9E%E9%9D%A2%E8%A9%A6%E7%B7%B4%E7%BF%92%E7%B3%BB%E7%B5%B1%E7%AE%A1%E7%90%86%E5%BE%8C%E5%8F%B0%20-%20%5Bdev-oral.brid.pw%5D.png" alt="學生作業總覽" loading="lazy">
-        <span class="zoom">點擊放大</span>
+        <span class="zoom">點一下放大</span>
       </button>
       <figcaption><strong>學生作業總覽</strong><span>搜尋、篩選學生進度，查看是否已提交、是否已批改與最後成績。</span></figcaption>
     </figure>
@@ -355,7 +355,7 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
     <figure class="shot">
       <button class="shot-btn" type="button" data-img="/assets/images/FireShot%20Capture%20023%20-%20%E5%AD%B8%E7%94%9F%E4%BD%9C%E6%A5%AD%E8%A9%B3%E6%83%85%20-%20AI%20%E8%8B%B1%E8%AA%9E%E9%9D%A2%E8%A9%A6%E7%B7%B4%E7%BF%92%E7%B3%BB%E7%B5%B1%E7%AE%A1%E7%90%86%E5%BE%8C%E5%8F%B0%20-%20%5Bdev-oral.brid.pw%5D.png" aria-label="放大查看：學生作業詳情">
         <img src="/assets/images/FireShot%20Capture%20023%20-%20%E5%AD%B8%E7%94%9F%E4%BD%9C%E6%A5%AD%E8%A9%B3%E6%83%85%20-%20AI%20%E8%8B%B1%E8%AA%9E%E9%9D%A2%E8%A9%A6%E7%B7%B4%E7%BF%92%E7%B3%BB%E7%B5%B1%E7%AE%A1%E7%90%86%E5%BE%8C%E5%8F%B0%20-%20%5Bdev-oral.brid.pw%5D.png" alt="學生作業詳情" loading="lazy">
-        <span class="zoom">點擊放大</span>
+        <span class="zoom">點一下放大</span>
       </button>
       <figcaption><strong>學生作業詳情</strong><span>同一頁查看學生從職位設定、寫作、錄音、角色扮演、AI 回饋到心得的完整學習歷程。</span></figcaption>
     </figure>
@@ -378,7 +378,7 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
     <figure class="shot">
       <button class="shot-btn" type="button" data-img="/assets/images/FireShot%20Capture%20024%20-%20%E5%AD%B8%E7%94%9F%E4%BD%9C%E6%A5%AD%E7%B8%BD%E8%A6%BD%20-%20AI%20%E8%8B%B1%E8%AA%9E%E9%9D%A2%E8%A9%A6%E7%B7%B4%E7%BF%92%E7%B3%BB%E7%B5%B1%E7%AE%A1%E7%90%86%E5%BE%8C%E5%8F%B0%20-%20%5Bdev-oral.brid.pw%5D.png" aria-label="放大查看：批次補繳設定">
         <img src="/assets/images/FireShot%20Capture%20024%20-%20%E5%AD%B8%E7%94%9F%E4%BD%9C%E6%A5%AD%E7%B8%BD%E8%A6%BD%20-%20AI%20%E8%8B%B1%E8%AA%9E%E9%9D%A2%E8%A9%A6%E7%B7%B4%E7%BF%92%E7%B3%BB%E7%B5%B1%E7%AE%A1%E7%90%86%E5%BE%8C%E5%8F%B0%20-%20%5Bdev-oral.brid.pw%5D.png" alt="批次補繳設定" loading="lazy">
-        <span class="zoom">點擊放大</span>
+        <span class="zoom">點一下放大</span>
       </button>
       <figcaption><strong>批次補繳設定</strong><span>勾選多位學生後，統一設定補繳截止日期；高影響操作需再次輸入管理員密碼。</span></figcaption>
     </figure>
@@ -391,7 +391,7 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
   <table>
     <thead><tr><th>功能</th><th>用途</th></tr></thead>
     <tbody>
-      <tr><td><span class="badge-mini">匯出成績 XLSX</span></td><td>匯出作業成績，方便整理、備份或登錄。</td></tr>
+      <tr><td><span class="badge-mini">匯出成績 XLSX</span></td><td>匯出 Excel 格式的作業成績，方便整理、備份或登錄。</td></tr>
       <tr><td>批次匯出最新版本</td><td>匯出每位學生目前最新一次的批改／提交資料。</td></tr>
       <tr><td>批次匯出所有版本</td><td>保留學生多次嘗試與不同版本資料，適合研究與完整備份。</td></tr>
     </tbody>
@@ -401,9 +401,9 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
     <figure class="shot">
       <button class="shot-btn" type="button" data-img="/assets/images/FireShot%20Capture%20022%20-%20%E5%AD%B8%E7%94%9F%E4%BD%9C%E6%A5%AD%E7%B8%BD%E8%A6%BD%20-%20AI%20%E8%8B%B1%E8%AA%9E%E9%9D%A2%E8%A9%A6%E7%B7%B4%E7%BF%92%E7%B3%BB%E7%B5%B1%E7%AE%A1%E7%90%86%E5%BE%8C%E5%8F%B0%20-%20%5Bdev-oral.brid.pw%5D.png" aria-label="放大查看：學生作業總覽上的匯出功能">
         <img src="/assets/images/FireShot%20Capture%20022%20-%20%E5%AD%B8%E7%94%9F%E4%BD%9C%E6%A5%AD%E7%B8%BD%E8%A6%BD%20-%20AI%20%E8%8B%B1%E8%AA%9E%E9%9D%A2%E8%A9%A6%E7%B7%B4%E7%BF%92%E7%B3%BB%E7%B5%B1%E7%AE%A1%E7%90%86%E5%BE%8C%E5%8F%B0%20-%20%5Bdev-oral.brid.pw%5D.png" alt="學生作業總覽上的匯出功能" loading="lazy">
-        <span class="zoom">點擊放大</span>
+        <span class="zoom">點一下放大</span>
       </button>
-      <figcaption><strong>學生作業總覽上的匯出功能</strong><span>可匯出 XLSX 成績，並批次輸出最新版本或所有版本。</span></figcaption>
+      <figcaption><strong>學生作業總覽上的匯出功能</strong><span>可匯出 Excel（XLSX）成績，並批次輸出最新版本或所有版本。</span></figcaption>
     </figure>
     
 </section>
@@ -414,7 +414,7 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
   <details><summary>AI 回饋就是學生正式成績嗎？</summary><div>不是。AI 回饋用於學習與反思，正式成績仍由老師依作業指定的評分規準進行批改。</div></details>
   <details><summary>為什麼學生有 AI 回饋，但還是顯示未批改？</summary><div>因為 AI 學習回饋與教師正式批改是兩個階段。學生完成系統流程後，仍需要老師正式評分。</div></details>
   <details><summary>學生因設備或網路問題需要重做怎麼辦？</summary><div>可在學生作業總覽使用「允許重作」。若是期限問題，則使用單一或批次補繳設定。</div></details>
-  <details><summary>什麼時候適合匯出「所有版本」？</summary><div>需要保留學生多次練習歷程、研究分析或完整備份時使用；若只是登錄最終成績，通常匯出成績 XLSX 或最新版本即可。</div></details>
+  <details><summary>什麼時候適合匯出「所有版本」？</summary><div>需要保留學生多次練習歷程、研究分析或完整備份時使用；若只是登錄最終成績，通常匯出 Excel 成績或最新版本即可。</div></details>
 </section>
 
 <section class="section">
