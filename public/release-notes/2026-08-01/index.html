@@ -4,15 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="light">
-  <meta name="description" content="AI 英語面試練習系統 2026 年 8 月 1 日文件名稱、台灣繁體中文與法律頁面更新說明。">
+  <meta name="description" content="AI 英語面試練習系統 2026.08.01 穩定版 v2.0.3 更新說明，包含學習成果下載、角色扮演、法律文件與系統安全調整。">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="zh_TW">
-  <meta property="og:title" content="2026-08-01 文件名稱與文字更新｜AI 英語面試練習系統">
-  <meta property="og:description" content="使用者條款與隱私權政策改用較容易理解的台灣中文，並同步更新相關介面與文件版本。">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="2026-08-01 文件名稱與文字更新｜AI 英語面試練習系統">
-  <meta name="twitter:description" content="使用者條款與隱私權政策改用較容易理解的台灣中文，並同步更新相關介面與文件版本。">
-  <title>2026-08-01 文件名稱與文字更新｜AI 英語面試練習系統</title>
+  <meta property="og:title" content="2026.08.01 穩定版 v2.0.3｜AI 英語面試練習系統">
+  <meta property="og:description" content="完成學習成果保存與寄送、角色扮演流程、法律文字及系統安全與穩定性整理。">
+  <meta property="og:image" content="/assets/images/20260720-og-img.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="2026.08.01 穩定版 v2.0.3｜AI 英語面試練習系統">
+  <meta name="twitter:description" content="完成學習成果保存與寄送、角色扮演流程、法律文字及系統安全與穩定性整理。">
+  <meta name="twitter:image" content="/assets/images/20260720-og-img.png">
+  <title>2026.08.01 穩定版 v2.0.3｜AI 英語面試練習系統</title>
   <style>
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:#f5f5f3;color:#222;font-family:Arial,"Microsoft JhengHei","PingFang TC",sans-serif}
@@ -20,69 +22,145 @@
     .version{margin:0 0 8px;font-size:14px;color:#5f6368;font-weight:700}
     h1{margin:0;font-size:32px;line-height:1.35;color:#173f59}
     .subtitle{margin:10px 0 0;font-size:17px;color:#333}
+    .review{margin:8px 0 0;font-size:14px;color:#666}
     .wrap{width:min(100% - 32px,820px);margin:0 auto 56px;background:#fff;border-radius:12px;box-shadow:0 8px 28px rgba(0,0,0,.06)}
     .article{padding:34px 40px 40px}
     .article p{margin:0 0 18px;line-height:1.85;font-size:16px}
     .article h2{margin:34px 0 16px;font-size:22px;line-height:1.5;color:#173f59}
+    .article h3{margin:26px 0 8px;font-size:17px;line-height:1.6;color:#222}
     .article a{color:#165d87;text-underline-offset:3px}
-    .summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:22px 0}
-    .summary div{padding:17px 18px;border:1px solid #d6e0e5;border-radius:9px;background:#fbfcfc;line-height:1.7}
-    .summary strong{display:block;color:#173f59;margin-bottom:5px}
-    .notice{padding:16px 18px;margin:20px 0;border-left:4px solid #287b68;background:#eef8f4;line-height:1.8}
-    ul{margin:0 0 20px;padding-left:1.4rem;line-height:1.85}
-    li{margin-bottom:8px}
-    .document-links{display:grid;gap:10px;margin:18px 0 22px}
-    .document-links a{display:block;padding:14px 16px;border:1px solid #c7d3da;border-radius:8px;background:#f8fbfc;color:#173f59;font-weight:700;text-decoration:none}
-    footer{padding:0 20px 40px;text-align:center;font-size:12px;color:#777}
-    @media(max-width:640px){.site-header{padding:36px 18px 24px}h1{font-size:25px}.wrap{width:min(100% - 16px,820px);border-radius:8px}.article{padding:24px 18px 30px}.article p{font-size:15px}.summary{grid-template-columns:1fr}}
+    .greeting{font-weight:700}
+    .stat-box{border:1px solid #c7d3da;padding:16px 18px;margin:22px 0;line-height:1.75}
+    .stat-title{font-weight:700;font-size:17px;margin-bottom:2px}
+    .status-box{border:1px solid #e5c96a;padding:16px 20px;margin:22px 0;line-height:1.8}
+    .core{margin-bottom:10px!important}
+    .notice-list{margin:0 0 20px;padding-left:1.4rem;line-height:1.85}
+    .notice-list li{margin-bottom:8px}
+    .signoff{margin-bottom:6px!important}
+    .footnote{margin-top:24px!important;font-size:13px!important;color:#777}
+    #sig4{margin-top:32px}
+    footer{padding:0 20px 40px;text-align:center;font-size:12px;color:#999}
+    @media(max-width:640px){
+      .site-header{padding:36px 18px 24px}
+      h1{font-size:25px}
+      .subtitle{font-size:15px}
+      .wrap{width:min(100% - 16px,820px);border-radius:8px}
+      .article{padding:24px 18px 30px}
+      .article p{font-size:15px}
+      .article h2{font-size:20px}
+    }
   </style>
   <script defer src="/assets/js/site.js"></script>
   <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 </head>
 <body>
   <header class="site-header">
-    <p class="version">2026-08-01 文件名稱與文字更新</p>
+    <p class="version">2026.08.01 穩定版 v2.0.3</p>
     <h1>AI 英語面試練習系統</h1>
-    <p class="subtitle">台灣繁體中文與法律文件整體重整</p>
+    <p class="subtitle">開發進度與本次更新說明</p>
+    <p class="review">更新範圍｜2026 年 7 月 22 日至 8 月 1 日</p>
   </header>
 
   <main class="wrap">
     <article class="article">
-      <p>這次更新重新檢查網站、操作手冊、登入畫面與兩份法律文件。目標是在不縮減權利義務與個人資料告知範圍的前提下，改用台灣使用者較容易理解的繁體中文。</p>
+      <p class="greeting">親愛的同仁您好：</p>
+      <p>7 月 19 日完成第一個穩定版後，我繼續把大家實際使用時會遇到的事情一項一項補齊。這一輪不只是增加新功能，也重新檢查哪些設計真的適合學生與老師長期使用，哪些地方應該再簡單、清楚一點。</p>
+      <p>這次最明顯的改變，是學生完成練習並經老師批改後，可以下載自己的完整學習成果；老師也能依作業批次整理並寄送成果包。角色扮演則重新收斂成清楚的四題核心面試加一題個人化追問，讓對話自然，但不會偏離原本的教學任務。</p>
+      <p>我也完成一輪整體安全與穩定性檢查，針對輸入、檔案上傳、成果匯出及系統資源使用補上保護。這裡只說明對使用者有影響的結果，不公開測試方法或可能被誤用的細節。</p>
 
-      <div class="summary" aria-label="更新重點">
-        <div><strong>文件名稱更簡單</strong>對外統一使用「使用者條款」與「隱私權政策」，網站導覽入口改為「條款與隱私」。</div>
-        <div><strong>先看重點</strong>兩份文件先用簡短段落回答使用資格、資料內容、處理目的、傳送地區、保存期限與權利請求方式，再提供完整內容。</div>
-        <div><strong>文件版本一致</strong>兩份文件版本均為 2026-08-01.1，發布／更新日期為 2026 年 8 月 1 日，生效日期為 2026 年 9 月 8 日。</div>
-        <div><strong>舊版仍可查閱</strong>2026-07-22.2 版已完整保存於歷史版本，不再標示為現行版。</div>
+      <div class="stat-box">
+        <div class="stat-title">本次更新規模</div>
+        <div>6 次版本更新紀錄</div>
+        <div>90 個檔案有所調整</div>
+        <div>目前版本編號：b95a139</div>
       </div>
 
-      <h2>法律內容怎麼改</h2>
-      <p>必要法律名詞仍保留，但第一次出現時會補上白話說明。原本較像公文或內部文件的用字，也改成直接說明「誰可以使用」「資料會保存多久」「誰可以查看資料」「不提供資料會有什麼影響」。</p>
-      <p>隱私權政策同時包含《個人資料保護法》要求的告知事項，仍完整說明蒐集者、目的、資料類別、期間、地區、對象、方式、使用者權利及不提供資料的影響。隱私權政策使用「我已閱讀並了解」；使用者條款使用「我已閱讀、了解並同意遵守」，避免把資料告知與同意遵守條款混在一起。</p>
+      <p>從版本控制系統的紀錄來看，本次共新增約 6,282 行、刪除約 2,646 行程式內容。這些數字包含功能、測試與程式整理；比起修改量，我更在意的是每一項功能都有清楚的使用邊界，也能在資料不完整或服務暫時失效時安全地停止。</p>
+      <div class="status-box"><strong>版本狀態說明：</strong>以下所稱「已完成」，是指功能已納入截至 <code>b95a139</code> 的程式版本，並定義為「2026.08.01 穩定版 v2.0.3」。正式部署前仍須完成資料庫、物件儲存、郵件及實際環境驗證。</div>
 
-      <h2>資料傳送與保存說明更具體</h2>
-      <p>隱私權政策新增台灣語音處理伺服器的實際範圍：它可能暫時接收當次處理所需的錄音或文字，用於錄音格式轉換、語音辨識與示範語音；它不負責登入、帳號、資料庫或永久儲存，無法使用時由主系統接手。</p>
-      <p>OpenAI 的說明也依語音辨識、文字處理與語音產生分開記載。API 資料預設不會用於訓練模型，除非資料擁有者明確選擇分享；實際保存規則仍以使用的功能與供應商當時政策為準。</p>
+      <h2>本次更新的核心方向</h2>
+      <p class="core">一、讓學生可以完整保存自己的寫作、錄音、AI 回饋、心得與教師評分，也讓老師能清楚地把成果交還給學生。</p>
+      <p class="core">二、讓角色扮演保留真人面試的自然感，同時固定核心題意、提問順序與完成條件，避免重複提問或偏離任務。</p>
+      <p class="core">三、把法律文件、畫面文字、資料處理與系統安全重新整理，讓使用者看得懂，系統也更能承受異常輸入與重複操作。</p>
 
-      <h2>其他頁面同步更新</h2>
-      <ul>
-        <li>首頁、系統介紹、學生手冊與管理手冊的更新日期同步改為 2026-08-01。</li>
-        <li>登入與帳戶設定畫面同步使用新的文件名稱與勾選文字。</li>
-        <li>「學習鷹架」在一般說明中改成「逐步提示」，第一次出現時再補充教育上的正式名稱。</li>
-        <li>把容易造成誤解的內部開發詞彙改成實際功能說明，例如「語音處理伺服器」與「學生開始時的題目版本」。</li>
+      <h2>一、學生可以下載自己的完整學習成果</h2>
+      <p>學生完成作業且老師批改後，作業頁面會提供「下載完整成果」入口。成果包包含 Word 學習報告、跟讀與角色扮演音檔，以及檔案清單，方便學生保存、閱讀與回聽自己的練習歷程。</p>
+      <p>下載權限只限學生本人。若作業尚未完成、尚未批改、資料版本不完整，或檔案不屬於目前這份提交，系統會直接停止匯出，不會產生內容缺漏但看起來成功的檔案。</p>
+
+      <h2>二、老師可以依作業批次寄送成果</h2>
+      <p>管理端可以依作業整理所有符合資格的學生，逐一建立成果包並寄到主要信箱與備用信箱。老師可以查看處理進度、成功與失敗項目；若只有部分信箱寄送失敗，也能針對失敗項目重試。</p>
+      <p>寄送連結有保存期限，成果檔案也會依設定排入清理。連結本身相當於短期下載憑證，因此不應轉寄、公開張貼或交給無關人士。</p>
+
+      <h2>三、角色扮演改得更自然，也更清楚</h2>
+      <p>角色扮演仍以學生本次作業的四題核心面試題為主。AI 可以像真人面試官一樣換個方式提問或簡短回應學生上一輪的回答，但必須保留原題的實質內容，也不能把兩題混在一起。</p>
+      <p>四題完成後，第五題會依學生在寫作或現場回答中真正提過的內容，選擇一個尚未說清楚的重點追問。系統也會檢查問題是否重複、偏離面試或不符合英文提問格式；不符合時會改用安全且穩定的題目繼續流程。</p>
+      <p>管理端不再讓每份作業自行選擇不同的 AI 提示詞模板。寫作回饋、角色扮演與口語回饋改由系統統一管理規則，老師建立作業時只需設定題組、課程內容與正式批改使用的評分規準，減少設定互相衝突。</p>
+
+      <h2>四、法律文件與畫面文字重新整理</h2>
+      <p>網站、登入畫面與帳戶設定統一使用「使用者條款」與「隱私權政策」。兩份文件改用較自然的台灣繁體中文，先說明使用資格、資料內容、處理目的、傳送地區、保存期限與權利請求方式，再保留完整條文。</p>
+      <p>隱私權政策使用「我已閱讀並了解」；使用者條款使用「我已閱讀、了解並同意遵守」，避免把個人資料告知與同意遵守使用規則混在一起。舊版文件仍保留於歷史版本，方便日後查閱。</p>
+
+      <h2>五、完成系統安全與穩定性檢查</h2>
+      <p>這一輪重新檢查登入、文字輸入、錄音與照片上傳、AI 處理、成果匯出及管理端操作，並補上必要的格式驗證、大小限制、頻率限制、同時處理上限與錯誤清理機制。</p>
+      <p>照片會在接受前實際解碼、重新整理格式並移除不需要的附加資訊；錄音與成果包則會在大小、類型、權限或來源不符時停止處理。這些調整不改變正常的學習流程，主要是在異常或大量重複操作時保護系統與學生資料。</p>
+
+      <h2>六、使用者需要注意什麼</h2>
+      <ul class="notice-list">
+        <li>只有已完成且已有教師批改的作業，才可下載或寄送完整成果。</li>
+        <li>成果包含作答、錄音、AI 回饋、心得與教師評分，下載後請妥善保存，不要任意公開。</li>
+        <li>角色扮演固定完成四題核心題意與一題個人化追問；AI 的自然改問不代表更換題目。</li>
+        <li>新版本發布後，既有使用者會依系統流程重新閱讀並確認目前版本的法律文件。</li>
+        <li>本次安全檢查未刪除既有作答、錄音、AI 回饋、心得或教師評分。</li>
       </ul>
 
-      <div class="notice"><strong>重新確認提醒：</strong>新版文件發布後，既有學生會依系統目前機制重新閱讀並確認 2026-08-01.1 版。文件版本、連結與登入畫面必須同次發布，避免畫面內容與確認紀錄不一致。</div>
+      <hr style="border:0;border-top:2px dashed #000;">
+      <p>再次謝謝大家一路測試，也願意直接告訴我哪些地方不清楚、不方便，或和真正的教學現場有距離。</p>
+      <p>v2.0.3 把學生完成練習後的成果保存、角色扮演的提問方式、法律文字與系統保護再往前推了一步。接下來我會繼續做正式環境驗證與操作說明，讓九月開始使用時，老師和學生面對的是一套更清楚，也更穩定的系統。</p>
+      <p class="signoff">謹此再致謝忱</p>
+      <p class="signoff"><time datetime="2026-08-01">2026 年 8 月 1 日</time></p>
+      <p class="footnote">統計範圍：版本 <code>1ee2c8b5c441d0aa08f480d548d51a9b017ee069</code> 之後至 <code>b95a13949c6874a3c7998a07d3921cb46d40fe09</code>，共 6 次提交；差異統計為 90 個檔案、約新增 6,282 行及刪除 2,646 行。</p>
 
-      <div class="document-links">
-        <a href="/legal/system-terms/">閱讀使用者條款</a>
-        <a href="/legal/privacy-notice/">閱讀隱私權政策</a>
-        <a href="/legal/archive/">查看歷史版本</a>
-      </div>
-
-      <p>本次重整維持現有權利義務與告知範圍。正式上線前，仍應由校方、研究倫理或法律承辦人員做最終確認。</p>
-      <p><time datetime="2026-08-01">2026 年 8 月 1 日</time></p>
+<div id="sig4">
+<div style="font-family: 'Microsoft JhengHei', '微軟正黑體', Arial, sans-serif; font-size: 16px; line-height: 1.6; color: #000000; margin-bottom: 15px;">
+                        祝您<br/>
+                        　　日日有好事<br/>
+<br/>
+                        洪名琮　敬上<br/>
+</div>
+<table border="0" cellpadding="0" cellspacing="0" style="font-family: 'Microsoft JhengHei', '微軟正黑體', Arial, sans-serif; font-size: 13px; line-height: 1.5; color: #4b5563; max-width: 550px;">
+<tbody>
+<tr>
+<td style="padding-bottom: 10px; border-bottom: 1px solid #d1d5db;">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td style="padding-right: 12px; vertical-align: top;">
+<img alt="洪名琮" class="sig-image" src="https://gravatar.com/avatar/f2dd5fed292cce86eee2cc01af8bd8d7bbd5e743c8fcc4f45c335b0f4cfc200a?size=128&amp;d=initials" style="width: 60px; height: 60px; border-radius: 4px; display: block;"/>
+</td>
+<td style="vertical-align: top;">
+<div style="font-size: 15px; font-weight: 600; color: #1f2937; margin-bottom: 2px;">洪名琮</div>
+<div style="font-size: 12px; color: #6b7280; margin-bottom: 4px;">國立雲林科技大學 資訊管理系(115級)</div>
+<div style="font-size: 11px; color: #4b5563;"><a href="mailto:sutw@yuntech.edu.tw" style="color: #4b5563; text-decoration: none;">蘇姿文老師</a></div>
+<div style="font-size: 11px; color: #9ca3af;">語言中心/通識中心 英文教學助理</div>
+</td>
+</tr></tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td style="padding-top: 10px; padding-bottom: 10px;">
+<table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
+<tbody>
+<tr><td style="padding: 2px 0; font-size: 12px;"><span style="color: #9ca3af; width: 70px; display: inline-block;">公務信箱</span><a href="mailto:bridger@brid.pw" style="color: #4b5563; text-decoration: none;">bridger@brid.pw</a></td></tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="margin:28px auto 0; text-align:center; line-height:0;">
+<img alt="洪名琮簽名圖片" src="https://r2.brid.pw/sign-new.webp" style="display:inline-block;width:440px;max-width:100%;height:auto;border:0;border-radius:8px;"/>
+</div>
     </article>
   </main>
 
