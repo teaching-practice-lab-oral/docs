@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="color-scheme" content="light">
-<meta name="description" content="AI 英語面試練習系統老師／管理員操作手冊，包含使用者、作業、評分規準、提示詞、批改中心、學生作業檢視、批次補繳與成績匯出。">
+<meta name="description" content="AI 英語面試練習系統老師／管理員操作手冊，包含使用者、作業、評分規準、批改中心、學生作業檢視、批次補繳與成績匯出。">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:title" content="AI 英語面試練習系統｜老師／管理員版操作手冊">
-<meta property="og:description" content="從作業管理、評分規準與 AI 提示詞設定，到批改中心、正式評分、補繳設定與成績匯出，一份完整的管理後台操作指南。">
+<meta property="og:description" content="從作業管理與評分規準，到批改中心、正式評分、補繳設定與成績匯出，一份完整的管理後台操作指南。">
 
 <meta property="og:image" content="/assets/images/teacher-admin-guide-og.png">
 <meta property="og:image:secure_url" content="/assets/images/teacher-admin-guide-og.png">
@@ -81,6 +81,8 @@ h1{margin:15px 0 7px;color:var(--heading);font-size:clamp(34px,6vw,58px);line-he
 .shot{margin:22px 0 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#eef2f7}
 .shot-btn{position:relative;width:100%;display:block;padding:0;border:0;background:#eef2f7;cursor:zoom-in}
 .shot-btn img{display:block;width:100%;max-height:650px;object-fit:contain;object-position:top center;background:#eef2f7}
+.shot--long .shot-btn{height:clamp(360px,52vw,500px);overflow:hidden;background:#fff}
+.shot--long .shot-btn img{height:auto;max-height:none;object-fit:initial;background:#fff}
 .zoom{position:absolute;right:12px;bottom:12px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.95);border:1px solid #cfd6df;color:#394750;font-size:12px;font-weight:800;box-shadow:0 3px 12px rgba(0,0,0,.08)}
 figcaption{padding:13px 16px;background:#fff;border-top:1px solid var(--line)}
 figcaption strong{display:block;color:#314651;font-size:14px}figcaption span{display:block;color:#768087;font-size:13px;margin-top:2px}
@@ -107,10 +109,10 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
 }
 @media(max-width:620px){
   .hero-inner{padding:42px 0 34px}.lead{font-size:16px}.layout{width:min(100% - 14px,1240px);margin-top:15px}
-  .section{padding:25px 18px;border-radius:13px}.section h2{font-size:23px}.cards{grid-template-columns:1fr}.shot-btn img{max-height:500px}
+  .section{padding:25px 18px;border-radius:13px}.section h2{font-size:23px}.cards{grid-template-columns:1fr}.shot-btn img{max-height:500px}.shot--long .shot-btn{height:360px}.shot--long .shot-btn img{max-height:none}
 }
 @media print{
-  body{background:#fff}.sidebar,.zoom{display:none!important}.layout{display:block;width:100%;margin:0}.section{box-shadow:none;break-inside:avoid}.shot-btn img{max-height:none}
+  body{background:#fff}.sidebar,.zoom{display:none!important}.layout{display:block;width:100%;margin:0}.section{box-shadow:none;break-inside:avoid}.shot-btn img{max-height:none}.shot--long .shot-btn{height:auto;overflow:visible}
 }
 </style>
   <script src="/assets/js/site.js" defer></script>
@@ -122,11 +124,11 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
     <span class="badge">🧑‍🏫 老師／管理員版操作手冊</span>
     <h1>AI 英語面試練習系統</h1>
     <p class="subtitle">從課前設定、進度追蹤到正式批改</p>
-    <p class="lead">這份手冊依照管理後台的實際工作流程整理。老師可以從建立使用者與作業開始，設定題目、AI 提示詞與評分規準，再透過批改中心檢視學生完整學習歷程、進行正式評分、開放重作、設定補繳期限與匯出成績。</p>
-    <p class="subtitle">文件更新日期：2026-08-01</p>
+    <p class="lead">這份手冊依照管理後台的實際工作流程整理。老師可以從建立使用者與作業開始，設定題目與評分規準，再透過批改中心檢視學生完整學習歷程、進行正式評分、開放重作、設定補繳期限與匯出成績。</p>
+    <p class="subtitle">文件更新日期：2026-08-09</p>
     <div class="role-flow">
       <span>系統總覽</span><span>使用者管理</span><span>作業管理</span><span>評分規準</span>
-      <span>提示詞管理</span><span>批改中心</span><span>正式評分</span><span>成績匯出</span>
+      <span>批改中心</span><span>正式評分</span><span>成績匯出</span>
     </div>
   </div>
 </header>
@@ -140,12 +142,11 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
   <a href="#assignments">3. 作業管理</a>
   <a href="#assignment-edit">4. 編輯作業</a>
   <a href="#rubric">5. 評分規準</a>
-  <a href="#prompts">6. 提示詞管理</a>
-  <a href="#grading">7. 批改中心</a>
-  <a href="#student-overview">8. 學生作業總覽</a>
-  <a href="#student-detail">9. 學生作業詳情與批改</a>
-  <a href="#batch">10. 補繳、重作與批次功能</a>
-  <a href="#export">11. 成績匯出</a>
+  <a href="#grading">6. 批改中心</a>
+  <a href="#student-overview">7. 學生作業總覽</a>
+  <a href="#student-detail">8. 學生作業詳情與批改</a>
+  <a href="#batch">9. 補繳、重作與批次功能</a>
+  <a href="#export">10. 成績匯出</a>
   <a href="#faq">常見問題</a>
 </nav>
 
@@ -216,7 +217,7 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
     <li><strong>刪除：</strong>移除作業，已有學生資料時不要任意操作。</li>
     <li><strong>查看與批改：</strong>直接進入該作業的學生作業總覽。</li>
   </ul>
-  <div class="note">系統的固定學習流程為：<strong>欲應徵的職位 → 寫作 → 跟讀 → 角色扮演 → AI 回饋 → 心得撰寫</strong>。老師主要調整的是作業內容、題目、日期、提示詞與評分規準。</div>
+  <div class="note">系統的固定學習流程為：<strong>欲應徵的職位 → 寫作 → 跟讀 → 角色扮演 → AI 回饋 → 心得撰寫</strong>。老師主要調整的是作業內容、題目、日期與評分規準。</div>
   
     <figure class="shot">
       <button class="shot-btn" type="button" data-img="/assets/images/FireShot%20Capture%20017%20-%20%E4%BD%9C%E6%A5%AD%E7%AE%A1%E7%90%86%20-%20AI%20%E8%8B%B1%E8%AA%9E%E9%9D%A2%E8%A9%A6%E7%B7%B4%E7%BF%92%E7%B3%BB%E7%B5%B1%E7%AE%A1%E7%90%86%E5%BE%8C%E5%8F%B0%20-%20%5Bdev-oral.brid.pw%5D.png" aria-label="放大查看：作業管理">
@@ -230,26 +231,16 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
 
 <section class="section" id="assignment-edit">
   <h2>4. 編輯作業</h2>
-  <p>進入「編輯作業」後，可以設定作業名稱、說明、指定班級、開放日期與截止日期，也可以指定本作業使用的面試題組、AI 提示詞與評分規準。</p>
+  <p>進入「編輯作業」後，可以設定作業名稱、說明、指定班級、開放日期與截止日期，也可以指定本作業使用的面試題組與評分規準。</p>
   <div class="warn"><strong>作業的開始時間與結束時間，請由助教與老師先協調確認後再設定。</strong>若之後需要延長期限或開放補繳，也應先由助教與老師確認適用對象與補繳期限，再進入系統操作。</div>
   <div class="steps">
     <div class="step"><strong>基本設定</strong><p>確認標題、說明、指定班級；作業開始時間與結束時間請先由助教與老師協調後再設定。</p></div>
     <div class="step"><strong>題目設定</strong><p>確認寫作、跟讀與角色扮演共用的四道核心題目；可選公版題組或依規則建立自訂題組。</p></div>
-    <div class="step"><strong>AI 提示詞設定</strong><p>選擇寫作草稿回饋、面試官角色扮演與最終學習回饋使用的提示詞版本。</p></div>
     <div class="step"><strong>批改評分規準</strong><p>指定老師正式批改時使用的評分規準。</p></div>
     <div class="step"><strong>儲存全部</strong><p>確認後再儲存，並使用測試帳號檢查學生端顯示是否正確。</p></div>
   </div>
   <div class="note"><strong>自訂題組規則：</strong>必須恰好填寫 4 題，每題 1 至 500 個字元，並使用英文或其他拉丁文字。系統會保留老師輸入的順序，不會隨機重排。學生填寫的職位名稱、工作內容與能力背景仍可使用中文。</div>
-  <div class="warn">學生開始作答後，該次練習會保留開始時的題目版本；後續編輯不會覆寫既有練習歷程。為避免同一作業的學生接到不同任務，開放後仍不建議任意更換題目、AI 提示詞或評分規準。</div>
-  
-    <figure class="shot">
-      <button class="shot-btn" type="button" data-img="/assets/images/FireShot%20Capture%20018%20-%20%E4%BD%9C%E6%A5%AD%E4%B8%80%EF%BC%9A%E5%80%8B%E4%BA%BA%E8%83%8C%E6%99%AF%E8%88%87%E5%8B%95%E6%A9%9F%20-%20%E7%B7%A8%E8%BC%AF%E4%BD%9C%E6%A5%AD%20-%20%5Bdev-oral.brid.pw%5D.png" aria-label="放大查看：編輯作業">
-        <img src="/assets/images/FireShot%20Capture%20018%20-%20%E4%BD%9C%E6%A5%AD%E4%B8%80%EF%BC%9A%E5%80%8B%E4%BA%BA%E8%83%8C%E6%99%AF%E8%88%87%E5%8B%95%E6%A9%9F%20-%20%E7%B7%A8%E8%BC%AF%E4%BD%9C%E6%A5%AD%20-%20%5Bdev-oral.brid.pw%5D.png" alt="編輯作業" loading="lazy">
-        <span class="zoom">點一下放大</span>
-      </button>
-      <figcaption><strong>編輯作業</strong><span>設定作業基本資料、題組、AI 提示詞與本次批改使用的評分規準。</span></figcaption>
-    </figure>
-    
+  <div class="warn">學生開始作答後，該次練習會保留開始時的題目版本；後續編輯不會覆寫既有練習歷程。為避免同一作業的學生接到不同任務，開放後仍不建議任意更換題目或評分規準。</div>
 </section>
 
 <section class="section" id="rubric">
@@ -264,41 +255,18 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
   </ul>
   <div class="good">系統設計的重點是讓「學生當時被怎麼評」可以被保留下來。日後即使評分規準更新，過去成績仍應能追溯至原本使用的版本。</div>
   
-    <figure class="shot">
+    <figure class="shot shot--long">
       <button class="shot-btn" type="button" data-img="/assets/images/FireShot%20Capture%20019%20-%20%E8%A9%95%E5%88%86%E8%A6%8F%E6%BA%96%E7%AE%A1%E7%90%86%20-%20AI%20%E8%8B%B1%E8%AA%9E%E9%9D%A2%E8%A9%A6%E7%B7%B4%E7%BF%92%E7%B3%BB%E7%B5%B1%E7%AE%A1%E7%90%86%E5%BE%8C%E5%8F%B0%20-%20%5Bdev-oral.brid.pw%5D.png" aria-label="放大查看：評分規準管理">
         <img src="/assets/images/FireShot%20Capture%20019%20-%20%E8%A9%95%E5%88%86%E8%A6%8F%E6%BA%96%E7%AE%A1%E7%90%86%20-%20AI%20%E8%8B%B1%E8%AA%9E%E9%9D%A2%E8%A9%A6%E7%B7%B4%E7%BF%92%E7%B3%BB%E7%B5%B1%E7%AE%A1%E7%90%86%E5%BE%8C%E5%8F%B0%20-%20%5Bdev-oral.brid.pw%5D.png" alt="評分規準管理" loading="lazy">
-        <span class="zoom">點一下放大</span>
+        <span class="zoom">查看完整畫面</span>
       </button>
       <figcaption><strong>評分規準管理</strong><span>建立與維護正式評分規準，設定各面向配分與表現層級描述。</span></figcaption>
     </figure>
     
 </section>
 
-<section class="section" id="prompts">
-  <h2>6. 提示詞管理</h2>
-  <p>提示詞管理控制不同 AI 階段的行為，例如寫作草稿回饋、面試官角色扮演與最終學習回饋。</p>
-  <table>
-    <thead><tr><th>提示詞類型</th><th>用途</th></tr></thead>
-    <tbody>
-      <tr><td>面試主題寫作回饋提示詞</td><td>針對學生草稿提供英文文法、表達與內容結構建議。</td></tr>
-      <tr><td>面試官提示詞</td><td>控制 AI 面試官的角色、語言、安全規則與追問方式。</td></tr>
-      <tr><td>英語面試學習回饋提示詞</td><td>分析角色扮演結果並產生優勢與改進建議。</td></tr>
-    </tbody>
-  </table>
-  <div class="warn"><strong>修改提示詞屬於高影響操作。</strong>提示詞的改動可能直接改變學生收到的回饋內容或面試官行為。正式課程進行中，建議新增新版本，而不是直接覆蓋目前正在使用的版本。</div>
-  
-    <figure class="shot">
-      <button class="shot-btn" type="button" data-img="/assets/images/FireShot%20Capture%20020%20-%20%E6%8F%90%E7%A4%BA%E8%A9%9E%E7%AE%A1%E7%90%86%20-%20AI%20%E8%8B%B1%E8%AA%9E%E9%9D%A2%E8%A9%A6%E7%B7%B4%E7%BF%92%E7%B3%BB%E7%B5%B1%E7%AE%A1%E7%90%86%E5%BE%8C%E5%8F%B0%20-%20%5Bdev-oral.brid.pw%5D.png" aria-label="放大查看：提示詞管理">
-        <img src="/assets/images/FireShot%20Capture%20020%20-%20%E6%8F%90%E7%A4%BA%E8%A9%9E%E7%AE%A1%E7%90%86%20-%20AI%20%E8%8B%B1%E8%AA%9E%E9%9D%A2%E8%A9%A6%E7%B7%B4%E7%BF%92%E7%B3%BB%E7%B5%B1%E7%AE%A1%E7%90%86%E5%BE%8C%E5%8F%B0%20-%20%5Bdev-oral.brid.pw%5D.png" alt="提示詞管理" loading="lazy">
-        <span class="zoom">點一下放大</span>
-      </button>
-      <figcaption><strong>提示詞管理</strong><span>管理不同 AI 階段使用的系統提示詞與版本。</span></figcaption>
-    </figure>
-    
-</section>
-
 <section class="section" id="grading">
-  <h2>7. 批改中心</h2>
+  <h2>6. 批改中心</h2>
   <p>批改中心以作業為單位整理學生進度。每張作業卡會顯示未開始、練習中、已批改與需要協助的人數。</p>
   <ul class="check">
     <li>先選擇要批改的作業。</li>
@@ -318,7 +286,7 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
 </section>
 
 <section class="section" id="student-overview">
-  <h2>8. 學生作業總覽</h2>
+  <h2>7. 學生作業總覽</h2>
   <p>進入指定作業後，可以看到每位學生的進度、嘗試次數、詳細回饋、最後成績、批改狀態、問題回報與更新日期。</p>
   <h3>篩選與排序</h3>
   <ul class="check">
@@ -340,7 +308,7 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
 </section>
 
 <section class="section" id="student-detail">
-  <h2>9. 學生作業詳情與正式批改</h2>
+  <h2>8. 學生作業詳情與正式批改</h2>
   <p>點進學生後，可以在同一頁檢視其完整學習歷程。老師不只看到最後答案，也能查看學生從職位設定、寫作、跟讀、角色扮演、AI 回饋到心得反思的過程。</p>
   <h3>建議批改順序</h3>
   <div class="steps">
@@ -363,7 +331,7 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
 </section>
 
 <section class="section" id="batch">
-  <h2>10. 補繳、重作與批次功能</h2>
+  <h2>9. 補繳、重作與批次功能</h2>
   <p>學生遇到特殊狀況時，可以在作業總覽針對單一學生設定「允許重作」或「補繳設定」。若多位學生需要延長期限，也可以使用批次補繳設定。</p>
   <div class="warn"><strong>補繳設定請由助教與老師協調後再操作。</strong>請先確認哪些學生可以補繳、補繳至何時，以及是否需要同時允許重作，避免不同人收到不一致的期限或權限。</div>
   <h3>單一學生</h3>
@@ -386,7 +354,7 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
 </section>
 
 <section class="section" id="export">
-  <h2>11. 成績匯出與批次輸出</h2>
+  <h2>10. 成績匯出與批次輸出</h2>
   <p>學生作業總覽上方提供成績與批改資料匯出功能，方便老師備份與後續登錄。</p>
   <table>
     <thead><tr><th>功能</th><th>用途</th></tr></thead>
@@ -420,7 +388,7 @@ dialog::backdrop{background:rgba(14,21,32,.76)}
 <section class="section">
   <h2>老師端最推薦的日常工作流程</h2>
   <div class="steps">
-    <div class="step"><strong>課前一週</strong><p>名琮完成學生帳號與班級資料 → 老師與助教確認作業內容 → 協調開始／結束時間 → 測試題目、提示詞與評分規準。</p></div>
+    <div class="step"><strong>課前一週</strong><p>名琮完成學生帳號與班級資料 → 老師與助教確認作業內容 → 協調開始／結束時間 → 測試題目與評分規準。</p></div>
     <div class="step"><strong>作業開放後</strong><p>從批改中心看整體進度，優先處理「需要協助」或有問題回報的學生。</p></div>
     <div class="step"><strong>學生完成後</strong><p>進入學生詳情，依完整學習歷程與正式評分規準批改。</p></div>
     <div class="step"><strong>截止後</strong><p>若有補繳或重作需求，先由助教與老師協調對象與期限，再進行設定；最後匯出成績與必要的批改紀錄。</p></div>
