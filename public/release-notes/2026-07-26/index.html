@@ -18,12 +18,12 @@
   <style>
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:#f5f5f3;color:#222;font-family:Arial,"Microsoft JhengHei","PingFang TC",sans-serif}
-    .site-header{padding:56px 20px 34px;text-align:center}
+    .site-header{width:min(100% - 32px,820px);margin:0 auto;padding:56px 40px 34px;text-align:left}
     .version{margin:0 0 8px;font-size:14px;color:#5f6368;font-weight:700}
     h1{margin:0;font-size:32px;line-height:1.35;color:#173f59}
     .subtitle{margin:10px 0 0;font-size:17px;color:#333}
     .review{margin:8px 0 0;font-size:14px;color:#666}
-    .wrap{width:min(100% - 32px,820px);margin:0 auto 56px;background:#fff;border-radius:12px;box-shadow:0 8px 28px rgba(0,0,0,.06)}
+    .wrap{width:min(100% - 32px,820px);margin:0 auto 56px;background:#fff;border:1px solid #e1e4e1;border-radius:8px}
     .article{padding:34px 40px 40px}
     .article p{margin:0 0 18px;line-height:1.85;font-size:16px}
     .article h2{margin:34px 0 16px;font-size:22px;line-height:1.5;color:#173f59}
@@ -39,10 +39,10 @@
     .notice-list{margin:0 0 20px;padding-left:1.4rem;line-height:1.85}
     .notice-list li{margin-bottom:8px}
     .feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0 22px}
-    .feature-card{padding:17px 18px;border:1px solid #d6e0e5;border-radius:9px;background:#fbfcfc}
+    .feature-card{padding:17px 18px;border:1px solid #d6e0e5;border-radius:6px;background:#fbfcfc}
     .feature-card h3{margin:0 0 7px;font-size:16px;color:#173f59}
     .feature-card p{margin:0!important;font-size:14px!important;line-height:1.75!important}
-    .feature-label{display:inline-block;margin-bottom:8px;padding:3px 8px;border-radius:999px;background:#e8f2f6;color:#24556d;font-size:12px;font-weight:700}
+    .feature-label{display:inline-block;margin-bottom:8px;padding:3px 8px;border-radius:6px;background:#e8f2f6;color:#24556d;font-size:12px;font-weight:700}
     .security-note{padding:16px 18px;margin:20px 0;border-left:4px solid #287b68;background:#eef8f4;line-height:1.8}
     .signoff{margin-bottom:6px!important}
     .footnote{margin-top:24px!important;font-size:13px!important;color:#777}
@@ -50,12 +50,12 @@
     #sig4{margin-top:32px}
     footer{padding:0 20px 40px;text-align:center;font-size:12px;color:#999}
     @media(max-width:640px){
-      .site-header{padding:36px 18px 24px}
+      .site-header{width:min(100% - 16px,820px);padding:36px 18px 24px}
       h1{font-size:25px}
       .subtitle{font-size:15px}
       .wrap{width:min(100% - 16px,820px);border-radius:8px}
       .article{padding:24px 18px 30px}
-      .article p{font-size:15px}
+      .article p{font-size:16px}
       .article h2{font-size:20px}
       .stat-box,.feature-grid{grid-template-columns:1fr}
     }

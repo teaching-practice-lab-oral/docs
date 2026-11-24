@@ -19,12 +19,12 @@
   <style>
     .home-layout{width:min(100% - 24px,1180px);grid-template-columns:1fr}
     .entry-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:18px}
-    .entry-card{position:relative;display:block;min-height:178px;padding:24px 58px 24px 24px;border:1px solid var(--line);border-radius:18px;background:#fff;color:var(--text);box-shadow:0 10px 28px rgba(19,37,31,.05);text-decoration:none!important;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+    .entry-card{position:relative;display:block;min-height:178px;padding:24px 58px 24px 24px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--text);text-decoration:none!important;transition:border-color .18s ease,background .18s ease}
     .entry-card::after{content:"→";position:absolute;right:23px;top:50%;transform:translateY(-50%);color:var(--primary);font-size:25px;font-weight:900}
-    .entry-card:hover{transform:translateY(-3px);border-color:#b9d4ca;box-shadow:0 16px 38px rgba(19,37,31,.10)}
-    .entry-card .entry-label{display:inline-flex;margin-bottom:13px;padding:4px 9px;border-radius:999px;background:var(--primary-soft);color:#145340;font-size:12px;font-weight:800}
+    .entry-card:hover{border-color:#b9d4ca;}
+    .entry-card .entry-label{display:inline-flex;margin-bottom:13px;padding:4px 9px;border-radius:6px;background:var(--primary-soft);color:#145340;font-size:12px;font-weight:800}
     .entry-card strong{display:block;margin-bottom:8px;color:var(--heading);font-size:21px}
-    .entry-card p{margin:0;color:#617077;font-size:14px;line-height:1.7}
+    .entry-card p{margin:0;color:#617077;font-size:16px;line-height:1.7}
     @media(max-width:760px){.entry-grid{grid-template-columns:1fr}.entry-card{min-height:0}}
   </style>
   <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>

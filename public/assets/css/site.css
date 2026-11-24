@@ -7,8 +7,8 @@
   --muted: #5d6a70;
   --heading: #14364a;
   --line: #d9e2de;
-  --shadow: 0 18px 44px rgba(19, 37, 31, 0.09);
-  --radius: 18px;
+  --shadow: none;
+  --radius: 8px;
   --primary: #1b6f58;
   --primary-soft: #e4f3ec;
   --secondary: #245c8a;
@@ -61,9 +61,8 @@ a:hover {
 .hero-panel {
   padding: 28px 28px 30px;
   border: 1px solid var(--line);
-  border-radius: 28px;
+  border-radius: 8px;
   background: rgba(255, 255, 255, 0.78);
-  box-shadow: var(--shadow);
   backdrop-filter: blur(12px);
 }
 
@@ -72,7 +71,7 @@ a:hover {
   align-items: center;
   gap: 8px;
   padding: 6px 12px;
-  border-radius: 999px;
+  border-radius: 6px;
   border: 1px solid #bfd7ce;
   background: #fff;
   color: #315e51;
@@ -123,7 +122,7 @@ a:hover {
   justify-content: center;
   min-height: 44px;
   padding: 10px 16px;
-  border-radius: 12px;
+  border-radius: 8px;
   border: 1px solid #bfd0cb;
   background: #fff;
   color: #21363d;
@@ -151,7 +150,7 @@ a:hover {
   align-items: center;
   justify-content: center;
   padding: 6px 11px;
-  border-radius: 999px;
+  border-radius: 6px;
   border: 1px solid var(--line);
   background: #fff;
   color: #32515b;
@@ -173,9 +172,8 @@ a:hover {
   top: 18px;
   padding: 18px;
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: 8px;
   background: rgba(255, 255, 255, 0.9);
-  box-shadow: var(--shadow);
 }
 
 .sidebar .title {
@@ -188,7 +186,7 @@ a:hover {
 .sidebar a {
   display: block;
   padding: 8px 10px;
-  border-radius: 10px;
+  border-radius: 6px;
   color: #4a5960;
   font-size: 14px;
 }
@@ -210,7 +208,6 @@ a:hover {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: rgba(255, 255, 255, 0.9);
-  box-shadow: var(--shadow);
   scroll-margin-top: 20px;
 }
 
@@ -238,7 +235,7 @@ a:hover {
 .highlight {
   margin: 18px 0;
   padding: 16px 18px;
-  border-radius: 14px;
+  border-radius: 8px;
 }
 
 .note {
@@ -281,7 +278,7 @@ a:hover {
 .meta-card {
   padding: 18px;
   border: 1px solid var(--line);
-  border-radius: 16px;
+  border-radius: 8px;
   background: #fff;
 }
 
@@ -316,7 +313,7 @@ a:hover {
   position: relative;
   padding: 15px 16px 15px 46px;
   border: 1px solid var(--line);
-  border-radius: 14px;
+  border-radius: 8px;
   background: #fbfcfb;
 }
 
@@ -327,7 +324,7 @@ a:hover {
   top: 15px;
   width: 22px;
   height: 22px;
-  border-radius: 999px;
+  border-radius: 6px;
   background: var(--primary-soft);
   color: var(--primary);
   font-size: 12px;
@@ -375,9 +372,8 @@ a:hover {
 .figure-card {
   overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: 16px;
+  border-radius: 8px;
   background: #fff;
-  box-shadow: 0 10px 28px rgba(19, 37, 31, 0.06);
 }
 
 .figure-card button {
@@ -420,7 +416,7 @@ a:hover {
 
 .note-chip {
   padding: 5px 10px;
-  border-radius: 999px;
+  border-radius: 6px;
   border: 1px solid var(--line);
   background: #fff;
   color: #4b5c63;
@@ -446,15 +442,11 @@ a:hover {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.gallery-grid .figure-card {
-  box-shadow: none;
-}
-
 .dialog {
   width: min(96vw, 1600px);
   max-height: 96vh;
   border: 0;
-  border-radius: 16px;
+  border-radius: 8px;
   padding: 0;
   background: #fff;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
@@ -484,7 +476,7 @@ a:hover {
   float: right;
   margin: 12px 12px -48px 0;
   padding: 8px 13px;
-  border-radius: 999px;
+  border-radius: 6px;
   border: 1px solid #c8d4cf;
   background: rgba(255, 255, 255, 0.96);
   color: #2a3d43;
@@ -521,7 +513,7 @@ a:hover {
   .hero-panel,
   .section,
   .sidebar {
-    border-radius: 16px;
+    border-radius: 8px;
   }
 
   .hero-panel,
@@ -553,11 +545,5 @@ a:hover {
     width: 100%;
     margin: 0;
     display: block;
-  }
-
-  .section,
-  .hero-panel,
-  .figure-card {
-    box-shadow: none;
   }
 }
