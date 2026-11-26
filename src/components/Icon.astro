@@ -1,0 +1,16 @@
+---
+// Inline Bootstrap Icons (MIT), the same icon set the real system uses.
+// Read at build time, so no icon font is shipped.
+import { readFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
+
+interface Props { name: string; class?: string }
+const { name, class: cls = '' } = Astro.props;
+
+const require = createRequire(import.meta.url);
+const file = require.resolve(`bootstrap-icons/icons/${name}.svg`);
+const svg = readFileSync(file, 'utf8')
+  .replace('<svg ', `<svg aria-hidden="true" focusable="false" class="bi ${cls}" `)
+  .replace(/ width="16" height="16"/, ' width="1em" height="1em"');
+---
+<Fragment set:html={svg} />

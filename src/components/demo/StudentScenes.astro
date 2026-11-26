@@ -1,0 +1,237 @@
+---
+// Student-side screens, recreated from dev-oral_brid_pw/app/static/student/*.
+// Content: one real submission (assignment 2), anonymized. See src/data/demo.json.
+import Icon from '../Icon.astro';
+import demo from '../../data/demo.json';
+
+const steps = [
+  { label: '欲應徵的職位', icon: 'briefcase' },
+  { label: '寫作練習', icon: 'pencil-square' },
+  { label: '跟讀練習', icon: 'mic' },
+  { label: '角色扮演', icon: 'chat-dots' },
+  { label: 'AI 回饋', icon: 'bar-chart' },
+  { label: '心得撰寫', icon: 'journal-check' },
+];
+const stepState = (active: number, i: number) => (i < active ? 'done' : i === active ? 'active' : '');
+
+const fb = demo.feedback;
+const rp = demo.roleplay;
+const rep = demo.report;
+const analysis = [
+  ['語言豐富度', rep.analysis.language_complexity],
+  ['語言準確度', rep.analysis.language_accuracy],
+  ['內容邏輯與組織', rep.analysis.content_logic],
+  ['面試策略與表現效果', rep.analysis.interview_strategy],
+] as const;
+const cueEnd = demo.shadow.cues[demo.shadow.cues.length - 1].e;
+const mmss = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+---
+{/* Shared chrome is repeated per template so each scene is a self-contained snapshot. */}
+
+<template data-scene="job">
+  <div class="app">
+    <div class="app-nav"><span class="brand"><Icon name="arrow-left" />返回作業列表</span><span class="right"><span class="logout">登出</span></span></div>
+    <div class="app-container">
+      <h3 class="app-title">{demo.assignmentTitle}</h3>
+      <div class="steps">{steps.map((s, i) => <span class={`step ${stepState(0, i)}`}><Icon name={s.icon} />{s.label}</span>)}</div>
+      <div class="sec">
+        <div class="sec-head"><div><div class="sec-title">欲應徵的職位</div><div class="sec-sub">步驟 1／6 · 可使用中文填寫</div></div></div>
+        <div class="sec-body">
+          <div class="info">請使用中文描述你想應徵的工作。這些資料會協助 AI 讓寫作回饋、角色扮演與 AI 回饋更貼近你的目標；第一次 AI 寫作回饋後即鎖定。</div>
+          <div class="field"><span class="label">你想要應徵什麼職位？ <span class="req">*</span></span><div class="input" id="pos" data-text={demo.job.position}></div><div class="hint">請寫出明確的職位名稱。</div></div>
+          <div class="field"><span class="label">這個職位在做什麼？ <span class="req">*</span></span><div class="textarea" id="desc" data-text={demo.job.description}></div></div>
+          <div class="field"><span class="label">它需要哪些職能？ <span class="req">*</span></span><div class="textarea" id="comp" data-text={demo.job.competencies}></div></div>
+          <div class="field"><span class="label">其他補充 <span class="opt">（選填）</span></span><div class="textarea" data-placeholder="可以補充產業、公司、你的經驗或特別想練習的情境。"></div></div>
+          <span class="btn btn-primary" id="save">儲存並前往寫作練習</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template data-scene="draft1">
+  <div class="app">
+    <div class="app-nav"><span class="brand"><Icon name="arrow-left" />返回作業列表</span><span class="right"><span class="logout">登出</span></span></div>
+    <div class="app-container">
+      <h3 class="app-title">{demo.assignmentTitle}</h3>
+      <div class="steps">{steps.map((s, i) => <span class={`step ${stepState(1, i)}`}><Icon name={i < 1 ? 'check-circle-fill' : s.icon} />{s.label}</span>)}</div>
+      <div class="sec">
+        <div class="sec-head"><div><div class="sec-title">寫作練習</div><div class="sec-sub">Writing Practice</div></div><span class="status active">進行中</span></div>
+        <div class="sec-body">
+          <div class="sub-step">
+            <div class="sub-label">草稿一 Draft 1</div>
+            <div class="panel">
+              <div class="q-text">Q1：{demo.questions[0]}</div>
+              <div class="scaffold">
+                <div class="sum">▼ Q1 提示</div>
+                <p>{demo.scaffold.role_connection}</p>
+                <ul>{demo.scaffold.experience_prompts.map((p) => <li>{p}</li>)}</ul>
+                <div class="chips">{[...demo.scaffold.keywords, ...demo.scaffold.sentence_starters].map((k) => <span class="chip">{k}</span>)}</div>
+              </div>
+              <div class="textarea tall" id="ans" data-placeholder="請針對此題撰寫你的答案... / Write your answer here..." data-text={demo.draft1}></div>
+              <div class="btn-row"><span class="btn btn-primary" id="save">儲存此題</span><span class="saved-note is-hidden" id="saved"><Icon name="check-circle-fill" />已儲存</span></div>
+            </div>
+          </div>
+          <div class="sub-step" id="aiStep">
+            <div class="sub-label">AI 練習回饋</div>
+            <div class="notice">此為AI回饋，不計入成績。</div>
+            <div class="btn-row"><span class="btn btn-outline" id="getFb">獲取 AI 練習回饋</span></div>
+            <div class="processing is-hidden" id="proc"><span class="spinner"></span>正在生成練習回饋...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template data-scene="feedback">
+  <div class="app">
+    <div class="app-nav"><span class="brand"><Icon name="arrow-left" />返回作業列表</span><span class="right"><span class="logout">登出</span></span></div>
+    <div class="app-container">
+      <h3 class="app-title">{demo.assignmentTitle}</h3>
+      <div class="steps">{steps.map((s, i) => <span class={`step ${stepState(1, i)}`}><Icon name={i < 1 ? 'check-circle-fill' : s.icon} />{s.label}</span>)}</div>
+      <div class="sec">
+        <div class="sec-head"><div><div class="sec-title">寫作練習</div><div class="sec-sub">Writing Practice</div></div><span class="status active">進行中</span></div>
+        <div class="sec-body">
+          <div class="sub-step done">
+            <div class="sub-label">AI 練習回饋</div>
+            <div class="fb-q"><Icon name="chat-square-text" /> Q3：{fb.question}</div>
+            <div class="fb-h">文法修正（{fb.corrections.length} 處）</div>
+            {fb.corrections.map((c, i) => (
+              <div class="cc is-hidden" id={`cc${i}`}>
+                <div class="cc-orig"><span class="tag">原句</span>{c.original}</div>
+                <div class="cc-fix"><span class="tag">修正</span>{c.corrected}</div>
+                <div class="cc-exp">{c.explanation}</div>
+              </div>
+            ))}
+            <div class="is-hidden" id="pol"><div class="fb-h">建議範文</div><div class="polished">{fb.polished}</div></div>
+          </div>
+          <div class="sub-step is-hidden" id="final">
+            <div class="sub-label">最終草稿 Final Draft</div>
+            <div class="panel">
+              <div class="q-text">Q3：{fb.question}</div>
+              <div class="textarea tall" id="finalText" data-placeholder="請撰寫修改後的答案... / Write your revised answer here..."></div>
+              <div class="btn-row"><span class="btn btn-primary" id="save">儲存此題</span><span class="saved-note is-hidden" id="saved"><Icon name="check-circle-fill" />已儲存</span></div>
+            </div>
+          </div>
+          <template id="polishedText">{fb.polished}</template>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template data-scene="shadow">
+  <div class="app">
+    <div class="app-nav"><span class="brand"><Icon name="arrow-left" />返回作業列表</span><span class="right"><span class="logout">登出</span></span></div>
+    <div class="app-container">
+      <h3 class="app-title">{demo.assignmentTitle}</h3>
+      <div class="steps">{steps.map((s, i) => <span class={`step ${stepState(2, i)}`}><Icon name={i < 2 ? 'check-circle-fill' : s.icon} />{s.label}</span>)}</div>
+      <div class="sec">
+        <div class="sec-head"><div><div class="sec-title">口說練習一：跟讀</div><div class="sec-sub">Speaking Practice 1 — Shadowing</div></div><span class="status active">進行中</span></div>
+        <div class="sec-body">
+          <div class="q-block">
+            <div class="q-label"><Icon name="mic-fill" />錄音中</div>
+            <div class="q-text">Q1：{demo.shadow.question}</div>
+            <div class="mini-h"><Icon name="volume-down" />示範音檔</div>
+            <div class="player"><span id="play"><Icon name="play-fill" /></span><span id="time">0:00 / {mmss(cueEnd)}</span><span class="bar"><i id="bar"></i></span><Icon name="volume-up-fill" /></div>
+            <div class="mini-h">跟讀字幕 Subtitle — 請跟著朗讀</div>
+            <div class="subtitle" id="sub">{demo.shadow.cues.map((c) => <span class="w" data-s={c.s} data-e={c.e}>{c.t}</span>)}</div>
+            <div class="mini-h rec"><Icon name="mic" />錄下你的跟讀</div>
+            <div id="recIdle"><div class="hint" style="margin:0 0 10px">最長 5 分鐘</div><span class="btn btn-record" id="rec"><Icon name="record-circle" />開始錄音</span></div>
+            <div id="recOn" class="is-hidden"><div class="btn-row" style="margin-top:0"><span class="rec-dot"></span><span class="timer" id="timer">0:00</span><span class="btn btn-stop" id="stop"><Icon name="stop-fill" />停止</span></div></div>
+            <div id="recDone" class="is-hidden">
+              <div class="hint" style="margin:0">錄好了。</div>
+              <div class="mini-h ok"><Icon name="play-circle" />先聽一次，沒問題再送出</div>
+              <div class="player"><Icon name="play-fill" /><span>0:00 / 0:36</span><span class="bar"><i></i></span><Icon name="volume-up-fill" /></div>
+              <div class="btn-row"><span class="btn btn-plain"><Icon name="arrow-repeat" />重錄</span><span class="btn btn-success" id="send">送出</span></div>
+            </div>
+            <div id="result" class="is-hidden">
+              <div class="mini-h"><Icon name="chat-square-text" />語音辨識結果</div>
+              <div class="transcript">{demo.shadow.transcript}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template data-scene="roleplay">
+  <div class="app">
+    <div class="app-nav"><span class="brand"><Icon name="arrow-left" />返回作業列表</span><span class="right"><span class="logout">登出</span></span></div>
+    <div class="app-container">
+      <h3 class="app-title">{demo.assignmentTitle}</h3>
+      <div class="steps">{steps.map((s, i) => <span class={`step ${stepState(3, i)}`}><Icon name={i < 3 ? 'check-circle-fill' : s.icon} />{s.label}</span>)}</div>
+      <div class="sec">
+        <div class="sec-head"><div><div class="sec-title">口說練習二：角色扮演</div><div class="sec-sub">Speaking Practice 2 — Role Play</div></div><span class="status active">進行中</span></div>
+        <div class="sec-body">
+          <div class="rp-progress" id="prog">核心題 0/4・追問 0/1</div>
+          <div class="chat" style="margin-top:10px">
+            {rp.map((t, i) => (
+              <>
+                <div class="is-hidden" id={`q${i}`}>
+                  <div class="who">面試官 Interviewer · 第 {t.n} 輪</div>
+                  <div class="bubble iv">{t.q}<br /><span class="btn btn-sm"><Icon name="volume-down" />播放問題</span></div>
+                </div>
+                <div class="is-hidden" id={`a${i}`} style="display:flex;flex-direction:column">
+                  <div class="who me">你的回答</div>
+                  <div class="bubble me">{t.a}<br /><span class="btn btn-sm"><Icon name="play-circle" />播放錄音</span></div>
+                </div>
+              </>
+            ))}
+          </div>
+          <div class="rec-panel" id="recIdle"><span class="btn btn-record" id="rec"><Icon name="record-circle" />開始錄音</span></div>
+          <div class="rec-panel is-hidden" id="recOn"><span class="rec-dot"></span><span class="timer" id="timer">0:00</span><span class="btn btn-stop" id="stop"><Icon name="stop-fill" />停止</span></div>
+          <div class="rec-panel is-hidden" id="recDone"><span class="hint" style="margin:0">錄好了。</span><span class="btn btn-plain"><Icon name="arrow-repeat" />重錄</span><span class="btn btn-success" id="send">送出</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template data-scene="report">
+  <div class="app">
+    <div class="app-nav"><span class="brand"><Icon name="arrow-left" />返回作業列表</span><span class="right"><span class="logout">登出</span></span></div>
+    <div class="app-container">
+      <h3 class="app-title">{demo.assignmentTitle}</h3>
+      <div class="steps">{steps.map((s, i) => <span class={`step ${stepState(4, i)}`}><Icon name={i < 4 ? 'check-circle-fill' : s.icon} />{s.label}</span>)}</div>
+      <div class="sec">
+        <div class="sec-head"><div><div class="sec-title">學習回饋</div><div class="sec-sub">Learning Feedback</div></div><span class="status done"><Icon name="check-circle-fill" />完成</span></div>
+        <div class="sec-body">
+          <div class="fb-h" style="margin-top:0"><Icon name="clipboard-data" /> 詳細分析</div>
+          <div class="grid2">
+            {analysis.map(([title, items], i) => (
+              <div class="an-card is-hidden" id={`an${i}`}><h5>・ {title}</h5><ul>{items.map((x) => <li>{x}</li>)}</ul></div>
+            ))}
+          </div>
+          <div class="list is-hidden" id="good"><h4>做得好的地方</h4><ul>{rep.strengths.map((x) => <li><span class="ok-mark">✓</span> {x}</li>)}</ul></div>
+          <div class="list is-hidden" id="improve"><h4>可以加強的地方</h4><ul>{rep.overall_suggestions.map((x) => <li>→ {x}</li>)}</ul></div>
+          <div class="section-nav btn-row" style="justify-content:flex-end"><span class="btn btn-primary" id="next">心得撰寫<Icon name="arrow-right" /></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template data-scene="reflection">
+  <div class="app">
+    <div class="app-nav"><span class="brand"><Icon name="arrow-left" />返回作業列表</span><span class="right"><span class="logout">登出</span></span></div>
+    <div class="app-container">
+      <h3 class="app-title">{demo.assignmentTitle}</h3>
+      <div class="steps">{steps.map((s, i) => <span class={`step ${stepState(5, i)}`}><Icon name={i < 5 ? 'check-circle-fill' : s.icon} />{s.label}</span>)}</div>
+      <div class="sec">
+        <div class="sec-head"><div><div class="sec-title">心得撰寫</div><div class="sec-sub">Reflection</div></div><span class="status active">進行中</span></div>
+        <div class="sec-body">
+          {demo.reflection.map((r, i) => (
+            <div class="rq">
+              <span class="label">{i + 1}. {r.q} <span class="req">*</span></span>
+              <div class="textarea" id={`r${i}`} data-text={r.a}></div>
+            </div>
+          ))}
+          <div class="btn-row" style="justify-content:flex-end"><span class="btn btn-primary" id="submit">正式送出</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

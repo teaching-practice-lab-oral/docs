@@ -1,0 +1,27 @@
+---
+// All prose on this page comes verbatim from the author's 系統介紹.docx (src/content/intro.json).
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import DemoPlayer, { type SceneMeta } from '../../components/demo/DemoPlayer.astro';
+import StudentScenes from '../../components/demo/StudentScenes.astro';
+import intro from '../../content/intro.json';
+
+const flowSec = intro.sections[1];
+const keys = ['job', 'draft1', 'feedback', 'shadow', 'roleplay', 'report', 'reflection'];
+const tabs = ['欲應徵的職位', '草稿一', 'AI 回饋與 Final Draft', '跟讀練習', '角色扮演', '學習回饋', '心得撰寫'];
+const scenes: SceneMeta[] = flowSec.subsections.map((s, i) => ({
+  key: keys[i],
+  tab: tabs[i],
+  title: s.title,
+  paragraphs: s.paragraphs,
+  list: s.list,
+}));
+---
+<Base title={flowSec.title}>
+  <PageHead title={flowSec.title} />
+  <div class="wrap doc">
+    <DemoPlayer name="student" label="學生作業流程" scenes={scenes}>
+      <StudentScenes />
+    </DemoPlayer>
+  </div>
+</Base>

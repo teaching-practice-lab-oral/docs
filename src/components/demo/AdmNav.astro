@@ -1,0 +1,27 @@
+---
+// Admin navbar, as built by dev-oral_brid_pw/app/static/admin/js/common.js.
+import Icon from '../Icon.astro';
+
+interface Props { on: string }
+const { on } = Astro.props;
+const links = [
+  { label: '總覽', icon: 'grid-1x2' },
+  { label: '使用者', icon: 'people' },
+  { label: '作業', icon: 'journal-text' },
+  { label: '批改', icon: 'clipboard-check' },
+  { label: '稽核', icon: 'shield-check' },
+  { label: '評分規準', icon: 'ui-checks-grid', divider: true },
+];
+---
+<div class="adm-nav">
+  <span class="adm-brand"><span class="logo"><Icon name="shield-check" /></span><span>AI 面試練習<small>管理後台</small></span></span>
+  <span class="adm-links">
+    {links.map((l) => (
+      <>
+        {l.divider && <i class="adm-div" aria-hidden="true"></i>}
+        <span class={l.label === on ? 'on' : ''}><Icon name={l.icon} />{l.label}</span>
+      </>
+    ))}
+  </span>
+  <span class="right"><span><Icon name="person-circle" /> 教師</span><span class="btn btn-sm adm-logout"><Icon name="box-arrow-right" />登出</span></span>
+</div>

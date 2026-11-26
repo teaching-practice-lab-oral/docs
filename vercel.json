@@ -1,4 +1,39 @@
 {
+  "framework": "astro",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "cleanUrls": true,
-  "trailingSlash": true
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/student/",
+      "permanent": false
+    },
+    {
+      "source": "/introduction/",
+      "destination": "/student/",
+      "permanent": false
+    },
+    {
+      "source": "/student-manual/:path*",
+      "destination": "/student/",
+      "permanent": false
+    },
+    {
+      "source": "/admin-manual/:path*",
+      "destination": "/student/",
+      "permanent": false
+    },
+    {
+      "source": "/release-notes/:path*",
+      "destination": "/student/",
+      "permanent": false
+    },
+    {
+      "source": "/legal/:path*",
+      "destination": "/student/",
+      "permanent": false
+    }
+  ]
 }

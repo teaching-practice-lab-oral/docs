@@ -1,0 +1,64 @@
+---
+import '../styles/site.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const { title, description = '', ogImage = '/assets/images/ai-english-oral-interview-system-og.png' } = Astro.props;
+const siteName = 'AI 英語面試練習系統';
+const fullTitle = title === siteName ? title : `${title}｜${siteName}`;
+
+const nav = [
+  { href: '/student/', label: '學生作業流程介紹' },
+  { href: '/teacher/', label: '教師端操作介紹' },
+  { href: '/background/', label: '系統設計背景' },
+];
+const path = Astro.url.pathname;
+const isCurrent = (href: string) => path.startsWith(href);
+---
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>{fullTitle}</title>
+    {description && <meta name="description" content={description} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="zh_TW" />
+    <meta property="og:title" content={fullTitle} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="canonical" href={new URL(path, Astro.site)} />
+    <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="site-name" href="/student/">{siteName}</a>
+        <nav class="site-nav" aria-label="主要導覽">
+          {nav.map((item) => (
+            <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>
+          ))}
+        </nav>
+      </div>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="wrap">
+        <span>© 2026 蘇姿文 / 洪名琮</span>
+        <span class="footer-links">
+          <a href="https://github.com/teaching-practice-lab-oral/oral" target="_blank" rel="noopener noreferrer">GitHub 原始碼</a>
+          <a href="https://brid.pw/mailme" target="_blank" rel="noopener noreferrer">聯絡我們</a>
+        </span>
+      </div>
+    </footer>
+  </body>
+</html>

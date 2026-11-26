@@ -1,0 +1,730 @@
+{
+  "assignmentTitle": "作業二：技能、專業能力與成就",
+  "assignments": [
+    "作業一：個人背景與動機",
+    "作業二：技能、專業能力與成就",
+    "作業三：情境與問題解決能力",
+    "作業四：工作態度與職場軟實力",
+    "作業五：企業了解、未來展望與提問"
+  ],
+  "questions": [
+    "What skills do you have that are relevant to this position?",
+    "What is your proudest accomplishment during your college years?",
+    "What is your greatest strength, and what is one area you would like to improve?",
+    "Why should we hire you?"
+  ],
+  "job": {
+    "position": "工業工程師",
+    "description": "主要負責分析與改善企業的生產流程與工作方式，以提升效率、降低成本、減少浪費並維持產品品質。服務對象包含管理階層、生產及品質部門與現場作業人員。日常工作通常包括觀察現場流程、分析生產數據、進行時間研究、找出問題原因，並與不同部門合作提出改善方案及追蹤改善成果。",
+    "competencies": "需具備分析、問題解決、組織規劃、溝通協調及數據處理能力，能透過分析生產流程與數據找出問題，並提出改善方案，並提出改善方案，同時也需要具備品質管理與持續改善的能力，與不同部門合作以提升工作效率，降低成本並維持品質。",
+    "notes": null
+  },
+  "scaffold": {
+    "role_connection": "這題要對應工業工程師常做的流程分析、數據判讀和改善提案。",
+    "experience_prompts": [
+      "你有沒有做過整理數據、找出問題原因的經驗？",
+      "哪一次你曾經觀察流程，發現哪裡太慢或太亂？"
+    ],
+    "keywords": [
+      "data analysis",
+      "problem solving",
+      "process improvement"
+    ],
+    "sentence_starters": [
+      "One relevant skill I have is…",
+      "I used this skill when…"
+    ]
+  },
+  "draft1": "My strongest skills for this job are process analysis and layout planning. During my factory internship, I checked the time needed for each step on the assembly line and found problems where parts piled up. As an Industrial Engineer, I can use these skills to reduce unnecessary movements, make work easier, and improve the efficiency of the production line.",
+  "feedback": {
+    "question": "What is your greatest strength, and what is one area you would like to improve?",
+    "corrections": [
+      {
+        "original": "During my internship, I watched how people worked and talked with workers to understand the problems they faced everyday.",
+        "corrected": "During my internship, I watched how people worked and talked with workers to understand the problems they faced every day.",
+        "explanation": "every day 是副詞片語，表示「每天」；everyday 是形容詞，不能直接用在這裡。"
+      },
+      {
+        "original": "One thing I want to improve is using numbers to support my ideas.",
+        "corrected": "One area I want to improve is using numbers to support my ideas.",
+        "explanation": "one area I want to improve 是更自然的固定表達，適合面試中談待改善的部分。"
+      }
+    ],
+    "polished": "My greatest strength is observing work and communicating clearly. During my internship, I watched how people worked and talked with workers to understand the problems they faced every day. One area I want to improve is using numbers to support my ideas. I am now learning data analysis tools so I can make better suggestions and show how much time can be saved.",
+    "draft1": "My greatest strength is observing work and communicating clearly. During my internship, I watched how people worked and talked with workers to understand the problems they faced everyday. One thing I want to improve is using numbers to support my ideas. I am now learning data analysis tools to make better suggestions and show how much time can be saved."
+  },
+  "shadow": {
+    "question": "What skills do you have that are relevant to this position?",
+    "cues": [
+      {
+        "t": "My ",
+        "s": 0.0,
+        "e": 0.44
+      },
+      {
+        "t": "strongest ",
+        "s": 0.44,
+        "e": 0.94
+      },
+      {
+        "t": "skills ",
+        "s": 0.94,
+        "e": 1.32
+      },
+      {
+        "t": "for ",
+        "s": 1.32,
+        "e": 1.6
+      },
+      {
+        "t": "this ",
+        "s": 1.6,
+        "e": 1.82
+      },
+      {
+        "t": "job ",
+        "s": 1.82,
+        "e": 2.14
+      },
+      {
+        "t": "are ",
+        "s": 2.14,
+        "e": 2.56
+      },
+      {
+        "t": "process ",
+        "s": 2.56,
+        "e": 2.98
+      },
+      {
+        "t": "analysis ",
+        "s": 2.98,
+        "e": 3.36
+      },
+      {
+        "t": "and ",
+        "s": 3.36,
+        "e": 3.96
+      },
+      {
+        "t": "layout ",
+        "s": 3.96,
+        "e": 4.26
+      },
+      {
+        "t": "planning. ",
+        "s": 4.26,
+        "e": 4.68
+      },
+      {
+        "t": "During ",
+        "s": 5.66,
+        "e": 5.72
+      },
+      {
+        "t": "my ",
+        "s": 5.72,
+        "e": 6.06
+      },
+      {
+        "t": "factory ",
+        "s": 6.06,
+        "e": 6.28
+      },
+      {
+        "t": "internship, ",
+        "s": 6.28,
+        "e": 6.76
+      },
+      {
+        "t": "I ",
+        "s": 7.02,
+        "e": 7.48
+      },
+      {
+        "t": "checked ",
+        "s": 7.48,
+        "e": 7.64
+      },
+      {
+        "t": "the ",
+        "s": 7.64,
+        "e": 7.86
+      },
+      {
+        "t": "time ",
+        "s": 7.86,
+        "e": 8.18
+      },
+      {
+        "t": "needed ",
+        "s": 8.18,
+        "e": 8.38
+      },
+      {
+        "t": "for ",
+        "s": 8.38,
+        "e": 8.68
+      },
+      {
+        "t": "each ",
+        "s": 8.68,
+        "e": 8.94
+      },
+      {
+        "t": "step ",
+        "s": 8.94,
+        "e": 9.18
+      },
+      {
+        "t": "on ",
+        "s": 9.18,
+        "e": 9.34
+      },
+      {
+        "t": "the ",
+        "s": 9.34,
+        "e": 9.7
+      },
+      {
+        "t": "assembly ",
+        "s": 9.7,
+        "e": 9.74
+      },
+      {
+        "t": "line ",
+        "s": 9.74,
+        "e": 10.08
+      },
+      {
+        "t": "and ",
+        "s": 10.08,
+        "e": 10.64
+      },
+      {
+        "t": "found ",
+        "s": 10.64,
+        "e": 10.88
+      },
+      {
+        "t": "problems ",
+        "s": 10.88,
+        "e": 11.32
+      },
+      {
+        "t": "where ",
+        "s": 11.32,
+        "e": 11.62
+      },
+      {
+        "t": "parts ",
+        "s": 11.62,
+        "e": 11.82
+      },
+      {
+        "t": "were ",
+        "s": 11.82,
+        "e": 12.34
+      },
+      {
+        "t": "piling ",
+        "s": 12.34,
+        "e": 12.51
+      },
+      {
+        "t": "up. ",
+        "s": 12.51,
+        "e": 12.68
+      },
+      {
+        "t": "As ",
+        "s": 12.84,
+        "e": 13.4
+      },
+      {
+        "t": "an ",
+        "s": 13.4,
+        "e": 14.02
+      },
+      {
+        "t": "industrial ",
+        "s": 14.02,
+        "e": 14.25
+      },
+      {
+        "t": "engineer, ",
+        "s": 14.25,
+        "e": 14.48
+      },
+      {
+        "t": "I ",
+        "s": 14.72,
+        "e": 15.04
+      },
+      {
+        "t": "can ",
+        "s": 15.04,
+        "e": 15.3
+      },
+      {
+        "t": "use ",
+        "s": 15.3,
+        "e": 15.46
+      },
+      {
+        "t": "these ",
+        "s": 15.46,
+        "e": 15.8
+      },
+      {
+        "t": "skills ",
+        "s": 15.8,
+        "e": 15.98
+      },
+      {
+        "t": "to ",
+        "s": 15.98,
+        "e": 16.3
+      },
+      {
+        "t": "reduce ",
+        "s": 16.3,
+        "e": 16.64
+      },
+      {
+        "t": "unnecessary ",
+        "s": 16.64,
+        "e": 17.28
+      },
+      {
+        "t": "movement, ",
+        "s": 17.28,
+        "e": 17.66
+      },
+      {
+        "t": "make ",
+        "s": 18.34,
+        "e": 18.4
+      },
+      {
+        "t": "work ",
+        "s": 18.4,
+        "e": 18.64
+      },
+      {
+        "t": "easier, ",
+        "s": 18.64,
+        "e": 19.04
+      },
+      {
+        "t": "and ",
+        "s": 19.3,
+        "e": 19.68
+      },
+      {
+        "t": "improve ",
+        "s": 19.68,
+        "e": 20.02
+      },
+      {
+        "t": "production ",
+        "s": 20.02,
+        "e": 20.44
+      },
+      {
+        "t": "line ",
+        "s": 20.44,
+        "e": 20.74
+      },
+      {
+        "t": "efficiency. ",
+        "s": 20.74,
+        "e": 21.1
+      },
+      {
+        "t": "I ",
+        "s": 21.64,
+        "e": 22.12
+      },
+      {
+        "t": "believe ",
+        "s": 22.12,
+        "e": 22.22
+      },
+      {
+        "t": "these ",
+        "s": 22.22,
+        "e": 22.54
+      },
+      {
+        "t": "skills ",
+        "s": 22.54,
+        "e": 22.78
+      },
+      {
+        "t": "match ",
+        "s": 22.78,
+        "e": 23.14
+      },
+      {
+        "t": "this ",
+        "s": 23.14,
+        "e": 23.46
+      },
+      {
+        "t": "position ",
+        "s": 23.46,
+        "e": 23.74
+      },
+      {
+        "t": "very ",
+        "s": 23.74,
+        "e": 24.18
+      },
+      {
+        "t": "well.",
+        "s": 24.18,
+        "e": 24.4
+      }
+    ],
+    "transcript": "My strongest skills for this job are process analysis and layout planning. During my factory internship, I checked the time needed for each step on the assembly line and found problems where parts were piling up. As an industrial engineer, I can use these skills to reduce unnecessary movement, make work easier and improve production line efficiency. I believe these skills match this position very well."
+  },
+  "roleplay": [
+    {
+      "n": 1,
+      "q": "What skills do you have that are relevant to this position?",
+      "a": "I think my strongest skills are process analysis and problem solving. During my factory internship, I observed the production line and checked how long each step took. I also found some problems that slow down the work. I believe I can use these skills to improve work process, reduce unnecessary movements, and make production more efficient."
+    },
+    {
+      "n": 2,
+      "q": "What is your proudest accomplishment during your college years?",
+      "a": "My proudest achievement was the facilities planning project. My team worked on improving the layout of a factory workstation. I helped measure work time, find problems, and suggest a better layout. In the end, we reduced working distances and made the work process smoother. I was happy because I could use what I learned in class to solve real problems."
+    },
+    {
+      "n": 3,
+      "q": "What do you think is your greatest strength, and what is one area you would like to improve?",
+      "a": "My greatest strength is that I'm good at observing and communicating with others. During my internship, I talked with workers to understand the problems they faced in their daily work. However, I want to get better at using data to support my ideas. So I'm learning data analysis tools to make better decisions and find ways to save time."
+    },
+    {
+      "n": 4,
+      "q": "Why should we hire you?",
+      "a": "I think you should hire me because I have knowledge of industrial engineering and real factoring experience. During my internship, I learned how to find problems on the production line and work with others to solve them. I am willing to learn, work hard, and cooperate with the team. I hope I can help improve production efficiency and product quality."
+    },
+    {
+      "n": 5,
+      "q": "During your internship, you mentioned that you identified bottlenecks on the production line; what was one challenge you faced while finding those problems?",
+      "a": "One challenge was finding a real reason for delays on the production line. At first, it was not easy to know why some parts of the process took longer than others. So, I carefully observed the workers, checked the time for each step, and talked with them about their work. This helped me better understand the problems and think about possible improvements."
+    }
+  ],
+  "report": {
+    "analysis": {
+      "content_logic": [
+        "「I observed... checked how long each step took」先方法後發現，邏輯清楚。",
+        "「I was happy because...」偏感受，若補一句成果影響會更完整。"
+      ],
+      "language_accuracy": [
+        "「real factoring experience」應為「real factory experience」，屬明顯用詞誤差。",
+        "「improve work process」可改成「improve the work process」，表達更完整。"
+      ],
+      "interview_strategy": [
+        "「I think you should hire me because...」直接回答題目，態度自然。",
+        "可把「willing to learn」接到職務需求，強化你能快速上手的印象。"
+      ],
+      "language_complexity": [
+        "「process analysis and problem solving」用詞明確，已能對應工業工程職務。",
+        "可再加入一個具體方法，如「time study」或「root cause analysis」，讓能力更立體。"
+      ]
+    },
+    "strengths": [
+      "能把實習經驗連到流程改善，和工業工程職務高度相關。",
+      "有主動觀察、與現場人員溝通的例子，能展現實務合作能力。"
+    ],
+    "overall_suggestions": [
+      "每題先講結論，再補一個具體例子，讓重點更快被聽懂。",
+      "描述成果時加上影響，例如節省時間、減少距離或提升效率。",
+      "準備一兩個固定專業詞，如 bottleneck、time study、root cause，增加專業感。"
+    ]
+  },
+  "reflection": [
+    {
+      "i": 0,
+      "q": "這次練習中，你最滿意或最有進步的地方是什麼？請舉一個具體例子。",
+      "a": "我覺得進步最多的部分是第二題錄音講大學最自豪成就的部分，沒有像以前回答得很空泛，而是嘗試直接破題並清楚講出自己負責的部分，讓整個回答有條理的帶出自己做了什麼和最後的成果。"
+    },
+    {
+      "i": 1,
+      "q": "寫作、跟讀、角色扮演中，哪一部分最有挑戰？你遇到什麼困難，又如何處理？",
+      "a": "我覺得角色扮演錄音時的第三題（將優缺點）最有挑戰，一開始講到要改進的地方時，會擔心不小心講到致命的缺點或顯得比較沒自信，而我的處理方式是把缺點轉成正在努力的方向，展現積極改善的態度。"
+    },
+    {
+      "i": 2,
+      "q": "看完 AI 回饋後，你認為自己的一項優勢與一項最需要改進的地方是什麼？",
+      "a": "看過AI回饋後，我的優勢是在回答時能用到一些專業詞彙，比如在第一題和第四題都有提到，最需要改進的是描述成果時少了具體的影響，像在第二題可以補上提升產線效率、減少幾%的走動。"
+    },
+    {
+      "i": 3,
+      "q": "如果重新進行一次面試，你會如何調整準備方式或回答內容？",
+      "a": "如果重來一次，在回答第四題為什麼要錄用我時，我會調整成先給一句核心結論，再補充一個現場故事的結構。"
+    },
+    {
+      "i": 4,
+      "q": "請訂下一個具體行動：要做什麼、何時完成、如何確認自己有進步？",
+      "a": "我打算在下禮拜一之前在四題的回答各挑出一個代表性的改善影響或成果例子確保口說順暢，具體做法是打開手機錄音，嘗試每題不看稿演練兩次，最後聽回放如果確認自己能順暢講完，就表示自己進步了。"
+    }
+  ],
+  "grade": {
+    "criteria": [
+      {
+        "name": "寫作練習（一）：內容與職位連結",
+        "max": 20,
+        "points": 20.0,
+        "label": "完整達成"
+      },
+      {
+        "name": "寫作練習（二）：修訂與清楚表達",
+        "max": 20,
+        "points": 20.0,
+        "label": "完整達成"
+      },
+      {
+        "name": "跟讀練習：語音清楚度",
+        "max": 20,
+        "points": 20.0,
+        "label": "完整達成"
+      },
+      {
+        "name": "角色扮演：理解與即席回應",
+        "max": 20,
+        "points": 20.0,
+        "label": "完整達成"
+      },
+      {
+        "name": "心得撰寫：反思證據與改進行動",
+        "max": 20,
+        "points": 16.0,
+        "label": "穩定達成"
+      }
+    ],
+    "score": 96.0,
+    "comment": "總體來說表現非常不錯！無論是學習態度或課堂表現都值得肯定，請繼續保持，相信英文能力一定會持續進步！",
+    "feedback": "整體表現良好，文法與發音方面皆沒有太大問題。若能持續累積單字量並加強口語表達，相信英文能力會更上一層樓！"
+  },
+  "rubric": {
+    "name": "AI 英語面試練習評分規準",
+    "description": "依寫作、跟讀、角色扮演與心得四個作業流程，以五個各 20 分的向度進行分析式評量。",
+    "version": 1,
+    "notes": [
+      "總分 100 分：五個向度各 20 分；每個向度只能選擇 20、16、12、8、4 或 0 分。",
+      "評分證據以系統實際保留的內容為準：寫作草稿、AI 寫作回饋、最終稿、跟讀錄音與逐字稿、角色扮演錄音與逐字稿，以及五題心得。",
+      "欲應徵職位資料與 AI 回饋本身不單獨計分；職位資料用來判斷寫作內容的連結，AI 回饋用來判斷學生是否選擇並完成適合自己的修訂。",
+      "跟讀以可理解度為準，不以接近母語口音為標準；逐字稿可能有辨識誤差，必要時應回聽原始錄音。",
+      "遲交在 Rubric 總分外扣 20 分，最低為 0 分；請在「異動／調分理由」記錄。"
+    ],
+    "dimensions": [
+      {
+        "name": "寫作練習（一）：內容與職位連結",
+        "weight": 20,
+        "description": "查看四題最終稿，評量學生是否直接回答題目，並把自己的經驗、能力與「欲應徵的職位」資料具體連結。",
+        "levels": [
+          {
+            "points": 20,
+            "label": "完整達成",
+            "anchor": "四題都直接回應題目；多數回答能連結目標職位或職能，並用具體且前後一致的個人經驗、做法或結果支持重點。"
+          },
+          {
+            "points": 16,
+            "label": "穩定達成",
+            "anchor": "四題大多切題；多數回答能連結目標職位或職能，並提供合適的個人細節，只有少數內容較概括。"
+          },
+          {
+            "points": 12,
+            "label": "基本達成",
+            "anchor": "四題都有基本回應，也有提到職位、能力或個人經驗，但多數說明較簡短，連結不夠具體。"
+          },
+          {
+            "points": 8,
+            "label": "部分達成",
+            "anchor": "只有部分回答切題，或多題停留在概括敘述；個人經驗與職位需求的關係不清楚。"
+          },
+          {
+            "points": 4,
+            "label": "初步呈現",
+            "anchor": "僅有少量可判讀內容；多數回答過短、偏題，或幾乎沒有提到職位與自己的經驗。"
+          },
+          {
+            "points": 0,
+            "label": "證據不足",
+            "anchor": "未提交最終稿，或內容空白、與題目無關，無法判斷。"
+          }
+        ]
+      },
+      {
+        "name": "寫作練習（二）：修訂與清楚表達",
+        "weight": 20,
+        "description": "比較四題草稿、AI 寫作回饋與最終稿，評量學生是否判斷並運用適用的建議，以及能否用有順序、可理解的英文清楚表達。",
+        "levels": [
+          {
+            "points": 20,
+            "label": "完整達成",
+            "anchor": "能判斷並處理適用的回饋，修訂不只是換字；各題重點與細節順序清楚，英文錯誤不影響理解，並保留自己的真實內容。"
+          },
+          {
+            "points": 16,
+            "label": "穩定達成",
+            "anchor": "多數需要調整之處已在最終稿修正；結構大致清楚，少量用字、句型或銜接問題不妨礙理解。"
+          },
+          {
+            "points": 12,
+            "label": "基本達成",
+            "anchor": "看得出部分修訂，但多集中在字詞或文法；能用簡單英文傳達主要意思，部分內容順序或句子仍不清楚。"
+          },
+          {
+            "points": 8,
+            "label": "部分達成",
+            "anchor": "草稿與最終稿差異有限，或修改後仍有較多零散、重複與不完整句子，需要評分者推測部分意思。"
+          },
+          {
+            "points": 4,
+            "label": "初步呈現",
+            "anchor": "僅做少量表面修改、直接沿用大段建議範文，或最終稿大多無法形成清楚回答。"
+          },
+          {
+            "points": 0,
+            "label": "證據不足",
+            "anchor": "缺少草稿、AI 寫作回饋或最終稿，無法比較修訂；或英文內容不足以判讀。"
+          }
+        ]
+      },
+      {
+        "name": "跟讀練習：語音清楚度",
+        "weight": 20,
+        "description": "查看四題跟讀錄音，必要時對照逐字稿與示範音訊，評量學生朗讀自己最終稿時是否容易理解；不以母語口音為標準。",
+        "levels": [
+          {
+            "points": 20,
+            "label": "完整達成",
+            "anchor": "四題錄音都清楚且能連續說完；速度、停頓與節奏能支持句意，聽者幾乎不需費力即可理解。"
+          },
+          {
+            "points": 16,
+            "label": "穩定達成",
+            "anchor": "四題整體容易理解且大致順暢；偶有發音、速度或停頓問題，但不影響主要內容。"
+          },
+          {
+            "points": 12,
+            "label": "基本達成",
+            "anchor": "多數內容可以理解；有較多停頓、逐字念讀或部分發音不清，聽者需要一些努力。"
+          },
+          {
+            "points": 8,
+            "label": "部分達成",
+            "anchor": "錄音常中斷、速度明顯不穩或多處發音不清，部分內容難以理解。"
+          },
+          {
+            "points": 4,
+            "label": "初步呈現",
+            "anchor": "僅有少量語音可理解；大部分錄音過短、反覆中斷，或發音問題明顯遮蔽內容。"
+          },
+          {
+            "points": 0,
+            "label": "證據不足",
+            "anchor": "未提供可用錄音，或四題錄音大多無法理解。"
+          }
+        ]
+      },
+      {
+        "name": "角色扮演：理解與即席回應",
+        "weight": 20,
+        "description": "查看各輪角色扮演錄音與逐字稿，評量學生是否直接回應四個核心題目，並針對最後的臨場追問補充具體細節；不要求逐字背誦最終稿。",
+        "levels": [
+          {
+            "points": 20,
+            "label": "完整達成",
+            "anchor": "四個核心題目與臨場追問都直接回應；回答有清楚重點與合適的真實細節，臨場追問能針對被問的單一細節補充。"
+          },
+          {
+            "points": 16,
+            "label": "穩定達成",
+            "anchor": "多數題目都能直接回應並加入個人細節；臨場追問大致切題，少數回答略短或較概括。"
+          },
+          {
+            "points": 12,
+            "label": "基本達成",
+            "anchor": "能回應熟悉的核心題目，但部分回答只重述準備內容或細節不足；臨場追問可辨認方向但不完整。"
+          },
+          {
+            "points": 8,
+            "label": "部分達成",
+            "anchor": "多題沒有掌握問題重點、回答彼此零散，或臨場追問未針對被問的細節回答。"
+          },
+          {
+            "points": 4,
+            "label": "初步呈現",
+            "anchor": "僅少數題目有可判讀且切題的回答；多數回答過短、偏題或只重複原稿。"
+          },
+          {
+            "points": 0,
+            "label": "證據不足",
+            "anchor": "未完成角色扮演，或錄音／逐字稿不足以判斷回答內容。"
+          }
+        ]
+      },
+      {
+        "name": "心得撰寫：反思證據與改進行動",
+        "weight": 20,
+        "description": "查看五題心得，評量學生是否引用本次練習證據說明自己的判斷，並提出可以執行與檢查的下一步。",
+        "levels": [
+          {
+            "points": 20,
+            "label": "完整達成",
+            "anchor": "五題都引用寫作、跟讀、角色扮演或 AI 回饋中的具體證據；能說明優勢、困難與原因，並提出包含做法、時間和檢查方式的改進行動。"
+          },
+          {
+            "points": 16,
+            "label": "穩定達成",
+            "anchor": "五題大多具體，能連結練習證據並說明優勢與待改進處；後續行動可執行，只有一項細節較不完整。"
+          },
+          {
+            "points": 12,
+            "label": "基本達成",
+            "anchor": "五題都有作答，能指出優勢、困難或待改進處，但證據與原因較簡略；後續行動仍較概括。"
+          },
+          {
+            "points": 8,
+            "label": "部分達成",
+            "anchor": "多數心得停留在「很好」「要加強」等概括描述；很少引用作業內容，後續行動缺少做法、時間或檢查方式。"
+          },
+          {
+            "points": 4,
+            "label": "初步呈現",
+            "anchor": "僅有少量可判讀反思；大多重述 AI 回饋或題目，未說明自己的判斷，也沒有具體下一步。"
+          },
+          {
+            "points": 0,
+            "label": "證據不足",
+            "anchor": "未正式送出心得，或內容不足以判斷學習反思與改進計畫。"
+          }
+        ]
+      }
+    ]
+  },
+  "setup": {
+    "title": "作業二：技能、專業能力與成就",
+    "description": "主題：職位相關技能、大學成就、優勢與改善方向、錄用理由\nTopics: Job-relevant skills, college accomplishments, strengths and improvement areas, and reasons for hiring",
+    "context": "Job-relevant skills, proudest college accomplishment, greatest strength, an area for improvement, and reasons the candidate should be hired",
+    "questionSet": "技能、專業能力與成就"
+  },
+  "questionSets": [
+    "個人背景與動機",
+    "技能、專業能力與成就",
+    "情境與問題解決能力",
+    "工作態度與職場軟實力",
+    "企業了解、未來展望與提問"
+  ],
+  "defaultSetQuestions": [
+    "Please briefly introduce yourself and your academic background.",
+    "Why did you choose your major, and how does it relate to this position?",
+    "Why are you interested in this industry and this position?",
+    "Do you have any work or internship experience? What were your main responsibilities?"
+  ]
+}

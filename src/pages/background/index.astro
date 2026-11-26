@@ -1,0 +1,85 @@
+---
+// The two opening paragraphs were written by Claude at the author's request, in the
+// style of 系統介紹.docx; everything else is verbatim from src/content/intro.json.
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import intro from '../../content/intro.json';
+
+const moduleSec = intro.sections[0];
+const table = moduleSec.blocks[0];
+const cn = ['一', '二', '三', '四', '五', '六', '七', '八'];
+---
+<Base title="系統設計背景">
+  <PageHead title="系統設計背景" />
+  <div class="wrap doc">
+    <h2>計畫資訊</h2>
+    <table class="plain info">
+      <tbody>
+        <tr><th scope="row">計畫名稱</th><td>AI 輔助之英文面試訓練模組--探討其對學習者面試表現提昇與語言焦慮降低的影響<br /><span class="en">AI-Assisted English Interview Training Module: Investigating Its Effects on Learners’ Interview Performance and the Reduction of Language Anxiety</span></td></tr>
+        <tr><th scope="row">計畫主持人</th><td>蘇姿文</td></tr>
+        <tr><th scope="row">系統設計與開發</th><td>洪名琮</td></tr>
+        <tr><th scope="row">執行單位</th><td>國立雲林科技大學 通識教育中心</td></tr>
+        <tr><th scope="row">使用課程</th><td>大三職場英文</td></tr>
+      </tbody>
+    </table>
+
+    <h2>從訓練模組到系統</h2>
+    {/* Written by Claude at the author's request, in the style of 系統介紹.docx. */}
+    <p>本系統的作業流程源自課程中的「英文面試訓練模組」。模組原先的設計，是由學生於課後使用ChatGPT網頁端自主練習，依序完成Draft 1、Draft 2、Final Draft、跟讀、角色扮演與口語表現診斷六個階段，並將各階段的產出填入學習單。各份作業的主題依照下表的五大面向設計。</p>
+    <table class="plain topics">
+      <caption>{table.caption}</caption>
+      <thead><tr>{table.table[0].map((h) => <th scope="col">{h}</th>)}</tr></thead>
+      <tbody>{table.table.slice(1).map((r) => <tr>{r.map((c) => <td>{c}</td>)}</tr>)}</tbody>
+    </table>
+    <p>本系統將原模組的六個階段整合在同一個作業流程中，學生不需要在ChatGPT與學習單之間反覆複製貼上，前一階段的內容會自動帶入下一階段；教師也能在同一個頁面查看學生每個階段的歷程並進行批改。系統化的過程中，我們依照上課方式與學生實際操作的情況調整了部分階段，並新增「欲應徵的職位」與「心得撰寫」兩個區段，對應關係如表 2 所示。</p>
+    <table class="plain mapping">
+      <caption>表 2：原模組階段與本系統作業區段對應</caption>
+      <thead><tr><th scope="col">系統區段</th><th scope="col">原模組階段</th><th scope="col">調整說明</th></tr></thead>
+      <tbody>
+        <tr><td>欲應徵的職位</td><td class="new">新增</td><td>學生先填寫欲應徵的職位、工作內容與所需職能，系統依此為每一題產生個人化的學習鷹架，讓後續的寫作與角色扮演都有具體的職場情境。</td></tr>
+        <tr><td>寫作練習</td><td>Draft 1、Draft 2、Final Draft</td><td>整合為一個區段。學生先獨立完成草稿，閱讀AI回饋後自行判斷是否採用建議，再修改為最終稿。</td></tr>
+        <tr><td>跟讀練習</td><td>口說練習 1</td><td>系統將學生自己的最終稿轉為示範語音，學生跟讀並錄音，錄音與語音辨識結果會保存供教師查看。</td></tr>
+        <tr><td>角色扮演</td><td>口說練習 2</td><td>AI扮演面試官提問四題核心題目後，再依學生先前的回答提出一題未預告的追問，練習臨場應答。</td></tr>
+        <tr><td>AI 回饋</td><td>口說練習 3</td><td>依角色扮演的逐字稿整理學生的優勢與改進建議。此回饋僅供練習參考，不列入正式成績。</td></tr>
+        <tr><td>心得撰寫</td><td class="new">新增</td><td>以五題引導學生回顧自己的作答、錄音與AI回饋，提出下一次練習的具體目標。</td></tr>
+      </tbody>
+    </table>
+    <details class="origin">
+      <summary>{moduleSec.title}：原模組設計流程</summary>
+      {moduleSec.intro.map((p) => <p>{p}</p>)}
+      <ol class="stages">
+        {moduleSec.subsections.map((s, i) => (
+          <li>
+            <h3><span class="idx">{cn[i]}、</span>{s.title}</h3>
+            {s.paragraphs.map((p) => <p>{p}</p>)}
+          </li>
+        ))}
+      </ol>
+    </details>
+  </div>
+</Base>
+
+<style>
+  .info { max-width: 960px; }
+  .info th { width: 9em; }
+  .info .en { color: var(--muted); font-size: .9rem; }
+  .mapping { margin: 8px 0 16px; }
+  .mapping td:first-child { white-space: nowrap; font-weight: 600; }
+  .mapping td:nth-child(2) { white-space: nowrap; color: var(--muted); }
+  .mapping td.new { color: var(--primary); font-weight: 700; }
+  .topics { margin: 8px 0 16px; }
+  .topics td:first-child { width: 4em; text-align: center; }
+  .topics td:nth-child(2) { white-space: nowrap; font-weight: 600; }
+  .origin { margin-top: 20px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); padding: 0 20px; }
+  .origin summary { cursor: pointer; padding: 14px 0; font-weight: 700; color: var(--primary); }
+  .origin[open] summary { border-bottom: 1px solid var(--border); margin-bottom: 14px; }
+  .origin > p { margin: 0 0 12px; max-width: 46em; }
+  .stages { list-style: none; margin: 0 0 16px; padding: 0; }
+  .stages li { padding: 12px 0; border-top: 1px solid var(--border); }
+  .stages h3 { margin: 0 0 4px; font-size: 1rem; line-height: 1.5; }
+  .stages .idx { color: var(--primary); }
+  .stages p { margin: 0; max-width: 46em; }
+  @media (max-width: 760px) {
+    .topics td:nth-child(2), .mapping td:first-child, .mapping td:nth-child(2) { white-space: normal; }
+  }
+</style>

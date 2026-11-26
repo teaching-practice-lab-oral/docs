@@ -1,0 +1,25 @@
+---
+// Teacher-side text is pending from the author.
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import DemoPlayer, { type SceneMeta } from '../../components/demo/DemoPlayer.astro';
+import TeacherScenes from '../../components/demo/TeacherScenes.astro';
+
+const scenes: SceneMeta[] = [
+  { key: 'rubrics', tab: '評分規準', title: '評分規準', pending: true },
+  { key: 'create', tab: '建立作業', title: '建立作業', pending: true },
+  { key: 'assignments', tab: '作業管理', title: '作業管理', pending: true },
+  { key: 'overview', tab: '學生作業總覽', title: '學生作業總覽', pending: true },
+  { key: 'detail', tab: '學生作業詳情', title: '學生作業詳情', pending: true },
+  { key: 'grading', tab: '批改', title: '批改', pending: true },
+];
+---
+<Base title="教師端操作介紹">
+  <PageHead title="教師端操作介紹" />
+  <div class="wrap doc">
+    <p class="pending-text">待撰寫：教師端的說明文字由作者提供。</p>
+    <DemoPlayer name="teacher" label="教師端操作" scenes={scenes}>
+      <TeacherScenes />
+    </DemoPlayer>
+  </div>
+</Base>

@@ -1,0 +1,79 @@
+/* Site chrome. Same tokens as the real system (app/static/student/common.css):
+   one navy, light grey page, thin borders, no shadows. */
+:root {
+  --primary: #1F3A5F;
+  --primary-hover: #172C48;
+  --primary-light: #5B7393;
+  --primary-soft: #E8EDF4;
+  --bg: #F5F6F8;
+  --surface: #ffffff;
+  --surface-soft: #F8F9FA;
+  --border: #DDE1E7;
+  --ink: #1F2328;
+  --muted: #5E6673;
+  --faint: #8A919C;
+  --success: #2E7D4F;
+  --success-soft: #EAF4EE;
+  --warning: #B26A00;
+  --warning-soft: #FBF3E6;
+  --danger: #B3261E;
+  --danger-soft: #FBECEB;
+  --radius: 8px;
+  --radius-sm: 6px;
+  --page: 1360px;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--bg); color: var(--ink); font-family: var(--font); line-height: 1.75; -webkit-text-size-adjust: 100%; }
+body { margin: 0; min-height: 100vh; display: flex; flex-direction: column; }
+main { flex: 1; }
+a { color: var(--primary); }
+a:hover { color: var(--primary-hover); }
+img { max-width: 100%; }
+:focus-visible { outline: 3px solid rgba(31, 58, 95, .35); outline-offset: 2px; }
+
+.wrap { width: min(100% - 32px, var(--page)); margin-inline: auto; }
+
+/* Header */
+.site-header { background: var(--surface); border-bottom: 1px solid var(--border); }
+.site-header .wrap { display: flex; align-items: center; gap: 28px; min-height: 60px; flex-wrap: wrap; }
+.site-name { color: var(--ink); font-weight: 700; text-decoration: none; letter-spacing: .01em; }
+.site-nav { display: flex; gap: 4px; flex-wrap: wrap; margin-left: auto; }
+.site-nav a { padding: 6px 12px; border-radius: var(--radius-sm); color: var(--muted); text-decoration: none; font-size: .94rem; }
+.site-nav a:hover { color: var(--primary); background: var(--primary-soft); }
+.site-nav a[aria-current="page"] { color: var(--primary); background: var(--primary-soft); font-weight: 700; }
+
+/* Footer */
+.site-footer { margin-top: 64px; border-top: 1px solid var(--border); background: var(--surface); color: var(--faint); font-size: .875rem; }
+.site-footer .wrap { padding-block: 20px; display: flex; gap: 16px; flex-wrap: wrap; justify-content: space-between; }
+
+/* Page heading block */
+.page-head { background: var(--surface); border-bottom: 1px solid var(--border); }
+.page-head .wrap { padding-block: 36px 32px; }
+.page-head .eyebrow { margin: 0 0 6px; color: var(--muted); font-size: .94rem; }
+.page-head h1 { margin: 0; font-size: clamp(1.6rem, 3vw, 2.1rem); line-height: 1.35; color: var(--ink); }
+.page-head .sub { margin: 8px 0 0; color: var(--muted); }
+
+/* Prose */
+.doc { padding-block: 40px 0; }
+.doc > h2 { margin: 56px 0 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); font-size: 1.45rem; line-height: 1.4; }
+.doc > h2:first-child { margin-top: 0; }
+.doc > h3 { margin: 28px 0 8px; font-size: 1.1rem; }
+.doc > p { margin: 0 0 14px; max-width: 46em; }
+
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+
+table.plain { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--border); font-size: .95rem; }
+table.plain th, table.plain td { padding: 10px 14px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+table.plain th { background: var(--surface-soft); color: var(--muted); font-weight: 700; white-space: nowrap; }
+table.plain caption { caption-side: top; text-align: left; padding: 0 0 8px; color: var(--muted); font-size: .9rem; }
+
+/* Clearly marked slot for text the author has not supplied yet */
+.pending-text { border: 1px dashed var(--primary-light); border-radius: var(--radius-sm); background: var(--surface); color: var(--primary-light); padding: 12px 14px; font-size: .92rem; }
+
+@media (max-width: 640px) {
+  .site-nav { margin-left: 0; width: 100%; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 8px; }
+  .site-nav a { white-space: nowrap; }
+}
+.footer-links { display: flex; gap: 20px; }

@@ -1,0 +1,267 @@
+---
+// Teacher-side screens, recreated from dev-oral_brid_pw/app/static/admin/*.
+// Names and IDs are placeholders; the student work is the same anonymized submission.
+// The rubric and the assignment settings are the real ones from the dev system.
+import Icon from '../Icon.astro';
+import AdmNav from './AdmNav.astro';
+import demo from '../../data/demo.json';
+import intro from '../../content/intro.json';
+
+// 教學內容 column of 表 1, one per assignment.
+const topicTable = intro.sections[0].blocks[0].table.slice(1);
+const topics = demo.assignments.map((_, i) => topicTable[i]?.[2] ?? '');
+
+const roster = [
+  { id: 'DEMO-01', name: '示範學生 A', done: 6, status: 'wait', demo: true },
+  { id: 'DEMO-02', name: '示範學生 B', done: 6, status: 'graded', score: 88 },
+  { id: 'DEMO-03', name: '示範學生 C', done: 4, status: 'doing' },
+  { id: 'DEMO-04', name: '示範學生 D', done: 6, status: 'graded', score: 91 },
+  { id: 'DEMO-05', name: '示範學生 E', done: 2, status: 'doing' },
+];
+const me = roster[0];
+const g = demo.grade;
+const rb = demo.rubric;
+const setup = demo.setup;
+const final1 = demo.shadow.cues.map((c) => c.t).join('').trim();
+const steps = ['基本設定', '評分設定', '確認送出'];
+const shared = ['表現優良 100%', '符合標準 75%', '尚待加強 50%', '基礎待提升 25%', '無法評分 0%'];
+const reportLabels: Record<string, string> = {
+  language_complexity: '語言豐富度',
+  language_accuracy: '語言準確度',
+  content_logic: '內容邏輯與組織',
+  interview_strategy: '面試策略與表現效果',
+};
+const fb = demo.feedback;
+const qIndex = demo.questions.indexOf(fb.question);
+---
+<template data-scene="rubrics">
+  <div class="app adm">
+    <AdmNav on="評分規準" />
+    <div class="adm-page">
+      <div class="adm-head col"><h2><Icon name="ui-checks-grid" /> 評分規準版本管理</h2><p class="sub">草稿可以修改或刪除；發布後如需調整，請建立新版本。每個評分項目可設定自己的配分級距。</p></div>
+      <div class="rb">
+        <aside class="adm-card rb-side">
+          <span class="label">評分規準版本</span>
+          <div class="ver" id="ver"><b>{rb.name}</b><small>v{rb.version} · 已發布</small></div>
+          <hr />
+          <b>共用五級換算</b>
+          <p class="muted">未自訂級距的項目才會使用。</p>
+          <div>{shared.map((s) => <span class="lvp">{s}</span>)}</div>
+        </aside>
+        <section>
+          <div class="adm-card muted center" id="rbEmpty">選擇左側的評分規準版本</div>
+          <div class="is-hidden" id="rbEditor">
+            <div class="adm-card form2">
+              <div><span class="label">名稱</span><div class="input ro">{rb.name}</div></div>
+              <div><span class="label">狀態</span><div class="input ro">v{rb.version} · 已發布</div></div>
+              <div class="full"><span class="label">說明</span><div class="input ro">{rb.description}</div></div>
+            </div>
+            <div class="rnote" id="rbNotes"><b><Icon name="exclamation-circle" /> 評分注意事項</b><ul>{rb.notes.map((n) => <li>{n}</li>)}</ul></div>
+            {rb.dimensions.map((d, i) => (
+              <div class="dim" id={`dim${i}`}>
+                <div class="dim-row"><div><span class="label">評分面向</span><div class="input ro b">{d.name}</div></div><div><span class="label">此面向配分</span><div class="input ro">{d.weight}</div></div></div>
+                <div class="crit-box">
+                  <span class="label">評分說明</span><div class="input ro">{d.description}</div>
+                  <div class="lv-head"><b>此項配分級距</b></div>
+                  {d.levels.map((l) => <div class="lv"><span class="pt">{l.points}</span><span class="nm">{l.label}</span><span class="an">{l.anchor}</span></div>)}
+                </div>
+              </div>
+            ))}
+            <div class="adm-card rb-foot" id="rbFoot"><span class="btn btn-outline"><Icon name="files" />建立新版</span><b class="ok-text" id="rbTotal">所有評分面向合計：{rb.dimensions.reduce((s, d) => s + d.weight, 0)} / 100</b></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template data-scene="create">
+  <div class="app adm">
+    <AdmNav on="作業" />
+    <div class="adm-page narrow">
+      <div class="adm-head"><span class="btn btn-plain"><Icon name="arrow-left" />返回作業列表</span><h2><Icon name="magic" /> 進階建立作業</h2></div>
+      <div class="wz">{steps.map((s, i) => <div class={`wz-i${i === 0 ? ' on' : ''}`} data-wz={i}><span class="c"><span class="d">{i + 1}</span><Icon name="check" class="ck" /></span><span>{s}</span></div>)}</div>
+
+      <div class="adm-card wz-p" id="w2">
+        <b>基本設定</b>
+        <span class="label">標題 <span class="req">*</span></span><div class="input" id="t" data-placeholder="例：自我介紹英語面試練習" data-text={setup.title}></div>
+        <span class="label">說明</span><div class="textarea sm" id="d" data-placeholder="作業說明（可留空）" data-text={setup.description}></div>
+        <span class="label">AI 情境主題說明 <span class="opt">（English，供 AI 了解面試情境）</span></span><div class="textarea sm" id="ctx" data-placeholder="e.g. Personal background, self-introduction, motivation for applying, strengths and weaknesses" data-text={setup.context}></div>
+        <span class="label">寫作、跟讀與角色扮演核心題意 <span class="pill navy">核心 4 題</span></span>
+        <p class="hint">寫作與跟讀使用原題；角色扮演第 1～4 題由 AI 保留題意自然改問，第 5 題則依學生內容個人化追問。</p>
+        <div class="select set" id="qs" data-v={`公版：${setup.questionSet}`}><span>公版：{demo.questionSets[0]}</span><Icon name="chevron-down" /></div>
+        <p class="hint">公版題組可直接啟用；學生會依自己填寫的職位、工作內容與職能作答。</p>
+        <div class="qprev" id="qp0"><ol>{demo.defaultSetQuestions.map((q) => <li>{q}</li>)}</ol></div>
+        <div class="qprev is-hidden" id="qp"><ol>{demo.questions.map((q) => <li>{q}</li>)}</ol></div>
+        <span class="label">指定班級 <span class="opt">（留空則開放全部學生）</span></span><div class="input" data-placeholder="輸入課號後按 Enter 新增"></div>
+        <div class="dates"><div><span class="label">開放日期</span><div class="input" data-placeholder="（不限）"></div></div><div><span class="label">截止日期</span><div class="input" data-placeholder="（不限）"></div></div></div>
+        <label class="chk"><span class="box on"><Icon name="check" /></span>立即啟用</label>
+        <div class="btn-row end"><span class="btn btn-primary" id="n2">下一步：評分設定 <Icon name="arrow-right" /></span></div>
+      </div>
+
+      <div class="adm-card wz-p is-hidden" id="w3">
+        <b>評分設定</b>
+        <p class="muted">AI 練習與角色扮演使用系統統一規則；老師只需選擇正式批改使用的評分規準。</p>
+        <span class="label"><Icon name="ui-checks-grid" /> 批改用評分規準</span>
+        <div class="select set" id="rs"><span>{rb.name} v{rb.version}</span><Icon name="chevron-down" /></div>
+        <p class="hint">學生開始作答時會固定此版本；之後更換只影響新的嘗試。</p>
+        <div class="btn-row between"><span class="btn btn-plain"><Icon name="arrow-left" />上一步</span><span class="btn btn-primary" id="n3">下一步：確認送出 <Icon name="arrow-right" /></span></div>
+      </div>
+
+      <div class="adm-card wz-p is-hidden" id="w4">
+        <b>確認作業設定</b>
+        <table class="kv">
+          <tr><th>標題</th><td>{setup.title}</td></tr>
+          <tr><th>說明</th><td class="pre">{setup.description}</td></tr>
+          <tr><th>AI 主題背景</th><td>{setup.context}</td></tr>
+          <tr><th>題組來源</th><td>公版：{setup.questionSet}</td></tr>
+          <tr><th>四題核心題意</th><td><ol>{demo.questions.map((q) => <li>{q}</li>)}</ol></td></tr>
+          <tr><th>狀態</th><td><span class="pill done">立即啟用</span></td></tr>
+          <tr><th>評分規準</th><td>{rb.name} v{rb.version}</td></tr>
+        </table>
+        <div class="btn-row between"><span class="btn btn-plain"><Icon name="arrow-left" />上一步</span><span class="btn btn-success" id="submit"><Icon name="check-circle" />建立作業</span></div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template data-scene="assignments">
+  <div class="app adm">
+    <AdmNav on="作業" />
+    <div class="adm-page">
+      <div class="adm-head"><h2><Icon name="journal-text" /> 作業管理</h2><span class="tools"><span class="btn btn-outline"><Icon name="ui-checks-grid" />評分規準管理</span><span class="btn btn-primary"><Icon name="plus-lg" />新增作業</span></span></div>
+      {demo.assignments.map((title, i) => (
+        <div class="adm-card is-hidden" id={`as${i}`}>
+          <div class="row1">
+            <span class="pill open">● 開放中</span><strong>{title}</strong>
+            <span class="tools"><span class="btn btn-primary" id={i === 1 ? 'open' : undefined}><Icon name="clipboard-check" />查看與批改</span><span class="btn btn-outline"><Icon name="pencil" />編輯</span></span>
+          </div>
+          <div class="meta">主題：{topics[i]}</div>
+          {i === 1 && (
+            <>
+              <div class="meta"><Icon name="question-circle" /> 寫作／跟讀／角色扮演共用題目</div>
+              <ol>{demo.questions.map((q) => <li>{q}</li>)}</ol>
+            </>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</template>
+
+<template data-scene="overview">
+  <div class="app adm">
+    <AdmNav on="批改" />
+    <div class="adm-page">
+      <div class="adm-head"><span class="btn btn-plain">← 作業管理</span><h2>學生作業：{demo.assignmentTitle}</h2><span class="tools"><span class="btn btn-success"><Icon name="file-earmark-spreadsheet" />匯出成績 XLSX</span></span></div>
+      <div class="filters">
+        <span class="search">搜尋姓名或學號...</span>
+        <span class="seg"><span class="on" id="fAll">全部</span><span>未開始</span><span>練習中</span><span>已完成</span><span id="fWait">待批改</span><span>已批改</span></span>
+      </div>
+      <table class="tbl">
+        <thead><tr><th>學號</th><th>姓名</th><th>進度</th><th>最後成績</th><th>批改狀態</th><th>操作</th></tr></thead>
+        <tbody>
+          {roster.map((r) => (
+            <tr data-status={r.status} data-demo-row={r.demo ? '1' : undefined}>
+              <td>{r.id}</td><td>{r.name}</td>
+              <td><span class="prog"><span class="bar"><i data-w={(r.done / 6) * 100}></i></span>{r.done}/6</span></td>
+              <td>{r.score ?? '—'}</td>
+              <td>{r.status === 'graded' ? <span class="pill done">已批改</span> : r.status === 'wait' ? <span class="pill wait">待批改</span> : <span class="pill grey">進行中</span>}</td>
+              <td><span class="btn btn-outline" id={r.demo ? 'grade' : undefined}><Icon name="pencil-square" />{r.status === 'wait' ? '批改' : '查看'}</span></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</template>
+
+<template data-scene="detail">
+  <div class="app adm">
+    <AdmNav on="批改" />
+    <div class="adm-page">
+      <div class="crumb">後台 / 作業 / 學生作業總覽 / <b>{me.name}</b><span class="tools"><span class="btn btn-plain"><Icon name="chevron-left" />上一位</span><span class="btn btn-outline">下一位<Icon name="chevron-right" /></span></span></div>
+      <div class="adm-head">
+        <span class="btn btn-plain"><Icon name="arrow-left" />返回</span>
+        <div><h2><Icon name="person-lines-fill" /> 學生詳情</h2><p class="sub">左側核對學習歷程，右側依評分規準完成批改。</p></div>
+        <span class="tools"><span class="btn btn-warn"><Icon name="arrow-repeat" />允許重作</span><span class="btn btn-outline"><Icon name="calendar-plus" />補繳設定</span></span>
+      </div>
+      <div class="adm-card stu-bar"><span><Icon name="person-badge" /> 學號 <code>{me.id}</code></span><span><Icon name="person" /> 姓名 <b>{me.name}</b></span><span><Icon name="envelope" /> 電子郵件 demo-a@example.edu</span></div>
+      <div class="att"><span class="muted">嘗試次數：</span><span class="select inline set"><span>第 1 次</span><Icon name="chevron-down" /></span><span class="muted">已正式送出</span><span class="tools"><span class="btn btn-outline"><Icon name="file-earmark-zip" />匯出全部</span><span class="btn btn-outline"><Icon name="file-earmark-word" />匯出 Word</span><span class="btn btn-plain"><Icon name="file-zip" />匯出音檔</span></span></div>
+      <div class="split">
+        <div id="hist">
+          <div class="stg fold"><div class="stg-h"><span class="num"><Icon name="shield-check" /></span>作答監考與異常時間軸<Icon name="chevron-down" class="chev" /></div></div>
+          <div class="stg" id="s1"><div class="stg-h"><span class="num done"><Icon name="check" /></span>欲應徵的職位</div>
+            <div class="stg-b"><p><b>欲應徵職位：</b>{demo.job.position}</p><p><b>職位工作內容：</b>{demo.job.description}</p><p><b>所需職能：</b>{demo.job.competencies}</p><p><b>其他補充：</b>{demo.job.notes ?? '無'}</p></div></div>
+          <div class="stg fold"><div class="stg-h"><span class="num"><Icon name="shield-check" /></span>個人化學習鷹架（唯讀）<Icon name="chevron-down" class="chev" /></div></div>
+          <div class="stg" id="s2"><div class="stg-h"><span class="num done"><Icon name="check" /></span>草稿撰寫</div>
+            <div class="stg-b"><div class="qa"><div class="q">Q1：{demo.questions[0]}</div><div class="ans">{demo.draft1}</div></div></div></div>
+          <div class="stg" id="s3"><div class="stg-h"><span class="num done"><Icon name="check" /></span>AI 練習回饋</div>
+            <div class="stg-b"><div class="qa"><div class="q"><Icon name="chat-quote" /> Q{qIndex + 1}：{fb.question}</div>
+              <div class="fx-h red"><Icon name="pencil-fill" /> 文法修正（{fb.corrections.length} 處）</div>
+              {fb.corrections.map((c) => <div class="cc"><div class="cc-orig"><span class="tag">原句</span>{c.original}</div><div class="cc-fix"><span class="tag">修正</span>{c.corrected}</div><div class="cc-exp">{c.explanation}</div></div>)}
+              <div class="fx-h green"><Icon name="stars" /> 建議範文</div><div class="ans">{fb.polished}</div></div></div></div>
+          <div class="stg" id="s4"><div class="stg-h"><span class="num done"><Icon name="check" /></span>最終草稿</div>
+            <div class="stg-b"><div class="qa"><div class="q green">Q1：{demo.questions[0]}</div><div class="ans">{final1}</div></div></div></div>
+          <div class="stg" id="s5"><div class="stg-h"><span class="num done"><Icon name="check" /></span>跟讀練習</div>
+            <div class="stg-b"><div class="qa"><div class="q">Q1：{demo.shadow.question}</div>
+              <div class="sm-h"><Icon name="volume-up" /> 示範音訊</div><span class="btn btn-outline"><Icon name="play-circle" />載入音訊</span>
+              <div class="sm-h"><Icon name="mic" /> 學生錄音（第 1 次）</div>
+              <span class="btn btn-outline" id="loadRec"><Icon name="play-circle" />載入音訊</span>
+              <div class="aud is-hidden" id="aud"><Icon name="pause-fill" /><span class="bar"><i id="audBar"></i></span><span id="audT">0:00</span> / 0:24</div>
+              <div class="sm-h"><Icon name="chat-text" /> 語音辨識</div><div class="ans">{demo.shadow.transcript}</div></div></div></div>
+          <div class="stg" id="s6"><div class="stg-h"><span class="num done"><Icon name="check" /></span>角色扮演</div>
+            <div class="stg-b">{demo.roleplay.map((t) => (
+              <div class="qa"><div class="q"><Icon name="person-workspace" /> 第 {t.n} 輪 — 面試官提問</div><p>{t.q}</p><div class="sm-h"><Icon name="mic" /> 學生回答</div><p>{t.a}</p></div>
+            ))}</div></div>
+          <div class="stg" id="s7"><div class="stg-h"><span class="num done"><Icon name="check" /></span>AI 回饋</div>
+            <div class="stg-b"><div class="fx-h"><Icon name="clipboard-data" /> 質性分析</div>
+              {Object.entries(demo.report.analysis).map(([k, v]) => <div class="qa"><div class="q">{reportLabels[k] ?? k}</div><ul>{(v as string[]).map((x) => <li>{x}</li>)}</ul></div>)}
+              <div class="fx-h green"><Icon name="hand-thumbs-up" /> 表現優點</div><ul>{demo.report.strengths.map((x) => <li>{x}</li>)}</ul>
+              <div class="fx-h"><Icon name="lightbulb" /> 整體建議</div><ul>{demo.report.overall_suggestions.map((x) => <li>{x}</li>)}</ul></div></div>
+          <div class="stg" id="s8"><div class="stg-h"><span class="num done"><Icon name="check" /></span>心得撰寫</div>
+            <div class="stg-b">{demo.reflection.map((r, i) => <div class="qa"><div class="q">{i + 1}. {r.q}</div><div class="ans plain">{r.a}</div></div>)}</div></div>
+        </div>
+        <div class="grade dim-panel" id="gp">
+          <h5><Icon name="ui-checks-grid" />批改面板 <span class="pill wait" style="margin-left:auto">待批改</span></h5>
+          <div class="muted small">{rb.name} v{rb.version}</div>
+          {g.criteria.map((c) => <div class="crit"><div class="n">{c.name} <span>/ {c.max}</span></div><div class="select"><span>請選擇等級</span><Icon name="chevron-down" /></div></div>)}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template data-scene="grading">
+  <div class="app adm">
+    <AdmNav on="批改" />
+    <div class="adm-page">
+      <div class="adm-head"><span class="btn btn-plain"><Icon name="arrow-left" />返回</span><div><h2><Icon name="person-lines-fill" /> 學生詳情</h2><p class="sub">左側核對學習歷程，右側依評分規準完成批改。</p></div></div>
+      <div class="split">
+        <div>
+          <div class="adm-card stu-bar"><span><Icon name="person-badge" /> 學號 <code>{me.id}</code></span><span><Icon name="person" /> 姓名 <b>{me.name}</b></span></div>
+          <div class="acc"><div class="acc-h"><Icon name="check-circle-fill" class="ok" />欲應徵的職位</div><div class="acc-b"><b>欲應徵職位：</b>{demo.job.position}<br /><b>職位工作內容：</b>{demo.job.description}</div></div>
+          <div class="acc"><div class="acc-h"><Icon name="check-circle-fill" class="ok" />草稿撰寫</div><div class="acc-b"><div class="q">Q1：{demo.questions[0]}</div><div class="ans">{demo.draft1}</div></div></div>
+          <div class="acc"><div class="acc-h"><Icon name="check-circle-fill" class="ok" />AI 練習回饋</div></div>
+          <div class="acc"><div class="acc-h"><Icon name="check-circle-fill" class="ok" />跟讀練習</div></div>
+          <div class="acc"><div class="acc-h"><Icon name="check-circle-fill" class="ok" />角色扮演</div></div>
+        </div>
+        <div class="grade">
+          <h5><Icon name="ui-checks-grid" />批改面板 <span class="pill wait" id="badge" style="margin-left:auto">待批改</span></h5>
+          <div class="muted small">{rb.name} v{rb.version}</div>
+          {g.criteria.map((c, i) => (
+            <div class="crit">
+              <div class="n">{c.name} <span>/ {c.max}</span></div>
+              <div class="select" id={`c${i}`} data-v={`${c.points} 分｜${c.label}`} data-p={c.points}><span>請選擇等級</span><Icon name="chevron-down" /></div>
+            </div>
+          ))}
+          <div class="total"><span>各項換算總分</span><span class="num" id="sum">—</span></div>
+          <span class="label">老師評定成績</span><div class="input" id="final" data-text={String(g.score)}></div>
+          <span class="label">總評 *</span><div class="textarea" id="comment" data-text={g.comment}></div>
+          <span class="label">改進建議 *</span><div class="textarea" id="fb" data-text={g.feedback}></div>
+          <div class="btn-row"><span class="btn btn-primary" id="save" style="width:100%"><Icon name="save" />儲存並立即公開</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
