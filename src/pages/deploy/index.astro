@@ -1,0 +1,121 @@
+---
+// Deployment overview for teachers and schools. Facts come from the public release
+// README (github.com/teaching-practice-lab-oral/oral); engineering detail stays there.
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+
+const repo = 'https://github.com/teaching-practice-lab-oral/oral';
+
+const needs = [
+  ['伺服器', '執行網站程式與資料庫', '需要能安裝 Docker。目前的部署範例使用 Ubuntu 虛擬機（OCI Ampere A1 ARM）。'],
+  ['網域與 HTTPS', '對外提供服務', '正式環境必須以 HTTPS 網域連線，可使用 Nginx、Caddy 或 Cloudflare Tunnel 等反向代理。'],
+  ['OpenAI API 帳號', '寫作回饋、學習鷹架、角色扮演、語音辨識與語音合成', 'AI 功能的費用依實際用量計算，由部署單位負擔。系統可以設定每位學生每天的呼叫上限。'],
+  ['雲端物件儲存', '儲存學生錄音、心得照片與成果包', '需支援 S3 相容介面，範例使用 Oracle Object Storage。'],
+  ['寄信信箱（SMTP）', '寄送帳號通知、密碼重設、截止提醒與成績通知', '使用寄信服務商核發的帳號與密碼。'],
+  ['Cloudflare Turnstile', '登入頁的防機器人驗證', '在 Cloudflare 後台新增網站後，即可取得金鑰。'],
+];
+
+const steps = [
+  '在伺服器上安裝 Docker。',
+  '下載專案原始碼，建置系統映像檔。',
+  '申請雲端物件儲存與 Cloudflare Turnstile，取得金鑰。',
+  '填寫環境設定檔，包含資料庫密碼、網域，以及各項外部服務的金鑰。',
+  '啟動服務，並設定 HTTPS 反向代理。',
+  '建立第一個管理員帳號，登入管理後台。',
+];
+
+const services = [
+  { x: 15, title: 'OpenAI API', lines: ['生成寫作回饋、提示短語', '角色扮演面試官', '語音辨識', '語音合成（示範朗讀）'] },
+  { x: 255, title: '雲端物件儲存', lines: ['儲存學生錄音', '心得照片', '成果包', '例：AWS S3'] },
+  { x: 495, title: '寄信信箱（SMTP）', lines: ['用於帳號通知', '密碼重設', '截止提醒', '成績通知'] },
+  { x: 735, title: '登入驗證', lines: ['Cloudflare Turnstile', '防止機器人登入'] },
+];
+---
+<Base title="部署說明" description="AI 英語面試練習系統以 Apache License 2.0 開放原始碼，本頁說明自行部署時需要準備的服務與流程。">
+  <PageHead title="部署說明" />
+  <div class="wrap doc">
+    <p>本系統以 Apache License 2.0 授權開放原始碼，學校或教師可以自行部署，在自己的課程中使用。本頁說明部署時需要準備哪些服務，以及各服務在系統中負責的工作。詳細的安裝步驟與設定方式，請參考 <a href={repo} target="_blank" rel="noopener noreferrer">GitHub 上的說明文件</a>。</p>
+
+    <h2>系統架構</h2>
+    <figure class="arch">
+      <svg viewBox="0 0 960 520" role="img" aria-labelledby="archTitle">
+        <title id="archTitle">系統架構：學生與教師透過瀏覽器，經 HTTPS 網域連到部署在伺服器上的網站程式與資料庫；網站程式再使用 OpenAI API、雲端物件儲存、寄信信箱與登入驗證四項外部服務。</title>
+        <defs>
+          <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="arrow" /></marker>
+        </defs>
+
+        <rect x="330" y="10" width="300" height="58" rx="6" class="box" />
+        <text x="480" y="35" class="t">學生、教師</text>
+        <text x="480" y="56" class="s">瀏覽器（電腦或手機）</text>
+        <path d="M480 68 V94" class="ln" marker-end="url(#ah)" />
+
+        <rect x="330" y="96" width="300" height="44" rx="6" class="box" />
+        <text x="480" y="124" class="m">HTTPS 網域（反向代理）</text>
+        <path d="M480 140 V166" class="ln" marker-end="url(#ah)" />
+
+        <rect x="200" y="168" width="560" height="134" rx="8" class="host" />
+        <text x="480" y="193" class="t navy">本系統（自行準備的伺服器，以 Docker 執行）</text>
+        <rect x="240" y="210" width="220" height="70" rx="6" class="box" />
+        <text x="350" y="238" class="t">網站程式</text>
+        <text x="350" y="260" class="s">學生端、教師端與 AI 流程</text>
+        <rect x="500" y="210" width="220" height="70" rx="6" class="box" />
+        <text x="610" y="238" class="t">資料庫</text>
+        <text x="610" y="260" class="s">帳號、作答與成績・每日備份</text>
+        <path d="M460 245 H496" class="ln" marker-end="url(#ah)" />
+
+        <text x="15" y="328" class="s left">外部服務（需自行申請帳號）</text>
+        <path d="M480 302 V338 M120 338 H840" class="ln" />
+        {services.map((s) => <path d={`M${s.x + 105} 338 V358`} class="ln" marker-end="url(#ah)" />)}
+        {services.map((s) => (
+          <g>
+            <rect x={s.x} y="360" width="210" height="150" rx="6" class="box" />
+            <text x={s.x + 105} y="388" class="t">{s.title}</text>
+            <line x1={s.x + 16} y1="400" x2={s.x + 194} y2="400" class="rule" />
+            {s.lines.map((l, i) => <text x={s.x + 105} y={424 + i * 22} class="s ink">{l}</text>)}
+          </g>
+        ))}
+      </svg>
+    </figure>
+    <p>學生與教師透過瀏覽器連線使用本系統，不需要另外安裝軟體。網站程式與資料庫以 Docker 執行在部署單位自行準備的伺服器上，資料庫每天會自動備份。寫作回饋、角色扮演、語音辨識與語音合成等 AI 功能，則透過 OpenAI API 處理。</p>
+
+    <h2>需要準備的項目</h2>
+    <table class="plain needs">
+      <thead><tr><th scope="col">項目</th><th scope="col">用途</th><th scope="col">說明</th></tr></thead>
+      <tbody>{needs.map(([a, b, c]) => <tr><td>{a}</td><td>{b}</td><td>{c}</td></tr>)}</tbody>
+    </table>
+    <p class="note">上述供應商只是目前的部署範例，也可以改用其他供應商。</p>
+
+    <h2>部署流程</h2>
+    <ol class="steps">{steps.map((s) => <li>{s}</li>)}</ol>
+    <p>系統沒有公開的註冊頁面，學生與教師的帳號由管理員在後台新增，或以 Excel 批次匯入。系統也內建與五大面向對應的五套預設作業，管理員建立後，再設定各份作業的開放與截止日期即可。每個步驟的指令與設定，請參考 <a href={repo} target="_blank" rel="noopener noreferrer">GitHub 上的說明文件</a>。</p>
+
+    <h2>部署前須知</h2>
+    <p>本專案不附帶任何學生資料，也不附帶可以直接使用的服務憑證。部署單位需自行準備各項外部服務的帳號，並負責學生資料的告知、同意、保存、刪除與跨境傳輸等相關規範。由於學生的作答文字與錄音會傳送至 OpenAI 進行處理，建議在使用前先向學生說明。</p>
+    <p>第三方套件與外部服務，仍適用各自的使用條款。</p>
+  </div>
+</Base>
+
+<style>
+  .arch { margin: 8px 0 20px; padding: 20px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow-x: auto; max-width: 1000px; }
+  .arch svg { display: block; width: 100%; min-width: 680px; height: auto; font-family: var(--font); }
+  .arch .box { fill: var(--surface); stroke: var(--border); stroke-width: 1.2; }
+  .arch .host { fill: var(--primary-soft); stroke: var(--primary); stroke-width: 1.2; }
+  .arch .ln { stroke: var(--primary-light); stroke-width: 1.4; fill: none; }
+  .arch .arrow { fill: var(--primary-light); }
+  .arch .rule { stroke: var(--border); }
+  .arch text { text-anchor: middle; fill: var(--ink); }
+  .arch .t { font-size: 16px; font-weight: 700; }
+  .arch .m { font-size: 15px; }
+  .arch .s { font-size: 13.5px; fill: var(--muted); }
+  .arch .s.ink { fill: var(--ink); }
+  .arch .left { text-anchor: start; }
+  .arch .navy { fill: var(--primary); }
+  .needs { max-width: 1000px; }
+  .needs td:first-child { white-space: nowrap; font-weight: 600; }
+  .note { color: var(--muted); font-size: .92rem; }
+  .steps { margin: 0 0 16px; padding-left: 1.4em; max-width: 46em; }
+  .steps li { margin-bottom: 6px; }
+  @media (max-width: 760px) {
+    .needs td:first-child { white-space: normal; }
+  }
+</style>
