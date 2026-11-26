@@ -1,7 +1,7 @@
 ---
 // Teacher-side screens, recreated from dev-oral_brid_pw/app/static/admin/*.
 // Names and IDs are placeholders; the student work is the same anonymized submission.
-// The rubric and the assignment settings are the real ones from the dev system.
+// The assignment settings are the real ones from the dev system; the rubric is draft v2 (評分規準草案_v2.md).
 import Icon from '../Icon.astro';
 import AdmNav from './AdmNav.astro';
 import demo from '../../data/demo.json';
@@ -79,7 +79,7 @@ const qIndex = demo.questions.indexOf(fb.question);
   <div class="app adm">
     <AdmNav on="作業" />
     <div class="adm-page narrow">
-      <div class="adm-head"><span class="btn btn-plain"><Icon name="arrow-left" />返回作業列表</span><h2><Icon name="magic" /> 進階建立作業</h2></div>
+      <div class="adm-head"><span class="btn btn-plain"><Icon name="arrow-left" />返回作業列表</span><h2><Icon name="magic" /> 建立作業</h2></div>
       <div class="wz">{steps.map((s, i) => <div class={`wz-i${i === 0 ? ' on' : ''}`} data-wz={i}><span class="c"><span class="d">{i + 1}</span><Icon name="check" class="ck" /></span><span>{s}</span></div>)}</div>
 
       <div class="adm-card wz-p" id="w2">
